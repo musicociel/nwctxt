@@ -8,7 +8,7 @@
     "test": "npm run lint && node test"
   },
   "author": "DivDE <divde@laposte.net>",
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "devDependencies": {
     "eslint": "^2.7.0"
   },
