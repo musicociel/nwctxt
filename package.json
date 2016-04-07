@@ -1,6 +1,6 @@
 {
   "name": "nwctxt",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Low level parser and generator for the nwctxt file format used by Note Worthy Composer.",
   "main": "src/index.js",
   "scripts": {
