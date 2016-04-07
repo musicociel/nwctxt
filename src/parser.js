@@ -51,9 +51,9 @@ function processQuotedValue(value) {
 }
 
 exports.parse = function (text) {
-  const content = [];
+  const instructions = [];
   const result = {
-    content: content
+    instructions: instructions
   };
   const lines = text.split(lineBreak);
   let state = 0; // 0 = before header, 1 = between header and footer, 2 = after footer
@@ -83,7 +83,7 @@ exports.parse = function (text) {
         };
         params.push(param);
       }
-      content.push(item);
+      instructions.push(item);
       continue;
     } else if (state == 0) {
       const matchLine = header.exec(line);

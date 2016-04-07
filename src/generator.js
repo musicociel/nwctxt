@@ -54,5 +54,5 @@ function processLine (lineInfo) {
 exports.generate = function (parsedFile) {
   const clip = parsedFile.clip ? "Clip" : "";
   const extra = parsedFile.extra ? `,${parsedFile.extra}` : "";
-  return `!NoteWorthyComposer${clip}(${parsedFile.version}${extra})\r\n${parsedFile.content.map(processLine).join("\r\n")}\r\n!NoteWorthyComposer${clip}-End\r\n`;
+  return `!NoteWorthyComposer${clip}(${parsedFile.version}${extra})\r\n${parsedFile.instructions.map(processLine).join("\r\n")}\r\n!NoteWorthyComposer${clip}-End\r\n`;
 };
