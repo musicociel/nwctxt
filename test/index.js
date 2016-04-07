@@ -47,17 +47,17 @@ assert.equal(parsedFile.version, "2.75");
 assert.equal(parsedFile.clip, false);
 assert.equal(parsedFile.extra, null);
 assert.equal(parsedFile.instructions[1].name, "SongInfo");
-assert.equal(parsedFile.instructions[1].params[0].name, "Title");
-assert.equal(parsedFile.instructions[1].params[0].value, "Test: \"with\" { } | [ ] \\ / 'special' _ - `chars`");
-assert.equal(parsedFile.instructions[1].params[0].quoted, true);
+assert.equal(parsedFile.instructions[1].fields[0].name, "Title");
+assert.equal(parsedFile.instructions[1].fields[0].value, "Test: \"with\" { } | [ ] \\ / 'special' _ - `chars`");
+assert.equal(parsedFile.instructions[1].fields[0].quoted, true);
 
 assert.equal(parsedClip.version, "2.75");
 assert.equal(parsedClip.clip, true);
 assert.equal(parsedClip.extra, "Single");
 assert.equal(parsedClip.instructions[0].name, "Clef");
-assert.equal(parsedClip.instructions[0].params[0].name, "Type");
-assert.equal(parsedClip.instructions[0].params[0].value, "Treble");
-assert.equal(parsedClip.instructions[0].params[0].quoted, false);
+assert.equal(parsedClip.instructions[0].fields[0].name, "Type");
+assert.equal(parsedClip.instructions[0].fields[0].value, "Treble");
+assert.equal(parsedClip.instructions[0].fields[0].quoted, false);
 
 const generatedFile = nwctxt.generator.generate(parsedFile);
 const generatedClip = nwctxt.generator.generate(parsedClip);

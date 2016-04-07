@@ -36,14 +36,14 @@ function quote(value) {
 
 function processLine (lineInfo) {
   const res = [`|${lineInfo.name}`];
-  const params = lineInfo.params;
-  params.forEach(param => {
+  const fields = lineInfo.fields;
+  fields.forEach(field => {
     res.push("|");
-    if (param.name) {
-      res.push(`${param.name}:`);
+    if (field.name) {
+      res.push(`${field.name}:`);
     }
-    let value = param.value;
-    if (param.quoted) {
+    let value = field.value;
+    if (field.quoted) {
       value = quote(value);
     }
     res.push(value);

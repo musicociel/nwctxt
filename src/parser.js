@@ -64,10 +64,10 @@ exports.parse = function (text) {
       continue;
     } else if (line[0] === "|" && state === 1) {
       const lineParts = line.split("|");
-      const params = [];
+      const fields = [];
       const item = {
         name: lineParts[1],
-        params: params
+        fields: fields
       };
       for (const part of lineParts.slice(2)) {
         const colon = part.indexOf(":");
@@ -76,12 +76,12 @@ exports.parse = function (text) {
         if (quoted) {
           value = processQuotedValue(value.slice(1, -1));
         }
-        const param = {
+        const field = {
           name: colon > -1 ? part.slice(0, colon) : null,
           value: value,
           quoted: quoted
         };
-        params.push(param);
+        fields.push(field);
       }
       instructions.push(item);
       continue;
