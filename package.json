@@ -5,14 +5,12 @@
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint src *.js",
-    "prepublish": "pegjs src/parser.pegjs src/parser.js",
     "test": "npm run lint && node test"
   },
   "author": "DivDE <divde@laposte.net>",
   "license": "AGPL-3.0",
   "devDependencies": {
-    "eslint": "^2.7.0",
-    "pegjs": "^0.9.0"
+    "eslint": "^2.7.0"
   },
   "repository": {
     "type": "git",

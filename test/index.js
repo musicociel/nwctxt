@@ -48,7 +48,7 @@ assert.equal(parsedFile.clip, false);
 assert.equal(parsedFile.extra, null);
 assert.equal(parsedFile.content[1].name, "SongInfo");
 assert.equal(parsedFile.content[1].params[0].name, "Title");
-assert.equal(parsedFile.content[1].params[0].value, "Test");
+assert.equal(parsedFile.content[1].params[0].value, "Test: \"with\" { } | [ ] \\ / 'special' _ - `chars`");
 assert.equal(parsedFile.content[1].params[0].quoted, true);
 
 assert.equal(parsedClip.version, "2.75");

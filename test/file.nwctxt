@@ -1,6 +1,6 @@
 !NoteWorthyComposer(2.75)
 |Editor|ActiveStaff:1|CaretIndex:5|CaretPos:-2
-|SongInfo|Title:"Test"|Author:"Test"|Lyricist:""|Copyright1:"Copyright © 2016 Test"|Copyright2:"All Rights Reserved"
+|SongInfo|Title:"Test: \"with\" { } \} [ ] \] / \'special\' _ - `chars`"|Author:"Test"|Lyricist:""|Copyright1:"Copyright © 2016 Test"|Copyright2:"All Rights Reserved"
 |PgSetup|StaffSize:16|Zoom:4|TitlePage:Y|JustifyVertically:Y|PrintSystemSepMark:N|ExtendLastSystem:N|DurationPadding:Y|PageNumbers:0|StaffLabels:None|BarNumbers:None|StartingBar:1
 |Font|Style:StaffItalic|Typeface:"Times New Roman"|Size:10|Bold:Y|Italic:Y|CharSet:0
 |Font|Style:StaffBold|Typeface:"Times New Roman"|Size:8|Bold:Y|Italic:N|CharSet:0

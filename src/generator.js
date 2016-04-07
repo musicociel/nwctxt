@@ -23,8 +23,15 @@
  */
 "use strict";
 
+const backslash = /\\/g;
+const pipe = /\|/g;
+const doubleQuote = /"/g;
+const singleQuote = /'/g;
+const cr = /\r/g;
+const lf = /\n/g;
+
 function quote(value) {
-  return `"${value.replace(/\\/g, "\\\\").replace(/"/g, "\\\"").replace(/'/g, "\\\'").replace(/\r/g, "\\r").replace(/\n/g, "\\n")}"`;
+  return `"${value.replace(backslash, "\\]").replace(pipe, "\\}").replace(doubleQuote, "\\\"").replace(singleQuote, "\\\'").replace(cr, "\\r").replace(lf, "\\n")}"`;
 }
 
 function processLine (lineInfo) {
