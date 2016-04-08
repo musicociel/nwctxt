@@ -1,5 +1,7 @@
 # nwctxt
 
+[![Build Status](https://travis-ci.org/davdiv/nwctxt.svg?branch=master)](https://travis-ci.org/davdiv/nwctxt)
+
 Parser and generator for the `.nwctxt` format used by [Note Worthy Composer](https://noteworthycomposer.com/).
 
 ## Installation
