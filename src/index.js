@@ -21,8 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 "use strict";
 
-exports.parser = require("./parser");
-exports.generator = require("./generator");
+exports.lowlevel = require("./lowlevel");

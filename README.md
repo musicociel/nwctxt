@@ -1,6 +1,6 @@
 # nwctxt
 
-Low level parser and generator for the `.nwctxt` format used by [Note Worthy Composer](https://noteworthycomposer.com/).
+Parser and generator for the `.nwctxt` format used by [Note Worthy Composer](https://noteworthycomposer.com/).
 
 ## Installation
 
@@ -10,11 +10,11 @@ npm install --save nwctxt
 
 ## Usage
 
-### API
+### Low level API
 
 ```js
 const fs = require("fs");
-const nwctxt = require("nwctxt");
+const nwctxt = require("nwctxt").lowlevel;
 
 const fileContent = fs.readFileSync("myFile.nwctxt", "utf-8");
 const parsedFile = nwctxt.parser.parse(fileContent);
