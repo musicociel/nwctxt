@@ -4,7 +4,7 @@
   "description": "Parser and generator for the nwctxt file format used by Note Worthy Composer.",
   "main": "src/index.js",
   "scripts": {
-    "lint": "eslint src *.js",
+    "lint": "eslint src test *.js",
     "test": "npm run lint && node test"
   },
   "author": "DivDE <divde@laposte.net>",

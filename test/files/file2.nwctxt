@@ -1,0 +1,9 @@
+!NoteWorthyComposerClip(2.75,Single)
+|Clef|Type:Treble
+|Key|Signature:Bb,Eb,Ab,Db|Tonic:A
+|Tempo|Base:Half|Tempo:52|Pos:12|Placement:AsStaffSignature
+|TimeSig|Signature:AllaBreve
+|User|ChordPlay.nw|Pos:7|Name:Fm|Span:3
+|Note|Dur:Half|Pos:-3
+|Note|Dur:Half|Pos:1
+!NoteWorthyComposerClip-End

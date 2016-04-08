@@ -23,8 +23,9 @@
  */
 "use strict";
 
-exports.lowlevel = require("./lowlevel");
-exports.parser = require("./parser");
-exports.generator = require("./generator");
-exports.createSong = require("./createSong");
-exports.emptyNWCTXT = require("./emptyNWCTXT");
+const parser = require("./parser");
+const emptyNwctxt = require("./emptyNWCTXT");
+
+module.exports = function() {
+  return parser.parse(emptyNwctxt);
+};

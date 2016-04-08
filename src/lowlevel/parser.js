@@ -90,7 +90,7 @@ exports.parse = function (text) {
       if (matchLine) {
         result.clip = !! matchLine[1];
         result.version = matchLine[2];
-        result.extra = matchLine[3];
+        result.extra = matchLine[3] || null;
         expectedFooter = `!NoteWorthyComposer${result.clip ? "Clip" : ""}-End`;
         state = 1;
         continue;

@@ -1,0 +1,214 @@
+{
+ "version": "2.75",
+ "clip": false,
+ "extra": null,
+ "fonts": {
+  "StaffItalic": {
+   "Typeface": "Times New Roman",
+   "Size": 10,
+   "Bold": "Y",
+   "Italic": "Y",
+   "CharSet": 0
+  },
+  "StaffBold": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": "Y",
+   "Italic": "N",
+   "CharSet": 0
+  },
+  "StaffLyric": {
+   "Typeface": "Times New Roman",
+   "Size": 7.2,
+   "Bold": "N",
+   "Italic": "N",
+   "CharSet": 0
+  },
+  "PageTitleText": {
+   "Typeface": "Times New Roman",
+   "Size": 24,
+   "Bold": "Y",
+   "Italic": "N",
+   "CharSet": 0
+  },
+  "PageText": {
+   "Typeface": "Times New Roman",
+   "Size": 12,
+   "Bold": "N",
+   "Italic": "N",
+   "CharSet": 0
+  },
+  "PageSmallText": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": "N",
+   "Italic": "N",
+   "CharSet": 0
+  },
+  "User1": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": "N",
+   "Italic": "N",
+   "CharSet": 0
+  },
+  "User2": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": "N",
+   "Italic": "N",
+   "CharSet": 0
+  },
+  "User3": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": "N",
+   "Italic": "N",
+   "CharSet": 0
+  },
+  "User4": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": "N",
+   "Italic": "N",
+   "CharSet": 0
+  },
+  "User5": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": "N",
+   "Italic": "N",
+   "CharSet": 0
+  },
+  "User6": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": "N",
+   "Italic": "N",
+   "CharSet": 0
+  }
+ },
+ "properties": {
+  "Editor": {
+   "ActiveStaff": 1,
+   "CaretIndex": 5,
+   "CaretPos": -2
+  },
+  "SongInfo": {
+   "Title": "Test: \"with\" { } | [ ] \\ / 'special' _ - `chars`",
+   "Author": "Test",
+   "Lyricist": "",
+   "Copyright1": "Copyright © 2016 Test",
+   "Copyright2": "All Rights Reserved"
+  },
+  "PgSetup": {
+   "StaffSize": 16,
+   "Zoom": 4,
+   "TitlePage": "Y",
+   "JustifyVertically": "Y",
+   "PrintSystemSepMark": "N",
+   "ExtendLastSystem": "N",
+   "DurationPadding": "Y",
+   "PageNumbers": 0,
+   "StaffLabels": "None",
+   "BarNumbers": "None",
+   "StartingBar": 1
+  },
+  "PgMargins": {
+   "Left": 1.27,
+   "Top": 1.27,
+   "Right": 1.27,
+   "Bottom": 1.27,
+   "Mirror": "N"
+  }
+ },
+ "staffs": [
+  {
+   "properties": {
+    "AddStaff": {
+     "Name": "Staff",
+     "Group": "Standard"
+    },
+    "StaffProperties": {
+     "EndingBar": "Section Close",
+     "Visible": "Y",
+     "BoundaryTop": 12,
+     "BoundaryBottom": 16,
+     "Lines": 5,
+     "Color": "Default",
+     "Muted": "N",
+     "Volume": 127,
+     "StereoPan": 64,
+     "Device": 0,
+     "Channel": 1
+    },
+    "StaffInstrument": {
+     "Trans": 0,
+     "DynVel": "10,30,45,60,75,92,108,127"
+    },
+    "Lyrics": {
+     "Placement": "Bottom",
+     "Align": "Standard Rules",
+     "Offset": 0
+    }
+   },
+   "music": [
+    {
+     "name": "Clef",
+     "fields": {
+      "Type": "Treble"
+     }
+    },
+    {
+     "name": "Key",
+     "fields": {
+      "Signature": "F#",
+      "Tonic": "G"
+     }
+    },
+    {
+     "name": "TimeSig",
+     "fields": {
+      "Signature": "4/4"
+     }
+    },
+    {
+     "name": "Rest",
+     "fields": {
+      "Dur": "4th",
+      "Opts": "Stem=Down"
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": "4th",
+      "Pos": -2,
+      "Opts": "Stem=Down"
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": "4th",
+      "Pos": -4,
+      "Opts": "Stem=Down"
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": "4th",
+      "Pos": -6,
+      "Opts": "Stem=Down"
+     }
+    }
+   ],
+   "lyrics": [
+    {
+     "Text": "G E C\n"
+    }
+   ]
+  }
+ ]
+}

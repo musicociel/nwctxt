@@ -23,4 +23,4 @@
  */
 "use strict";
 
-require("./lowlevel");
+require("./checkFiles");
