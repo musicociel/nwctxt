@@ -24,7 +24,7 @@
 "use strict";
 
 const assert = require("assert");
-const nwctxt = require("../src");
+const nwctxt = require("../dist/nwctxt");
 
 const fs = require("fs");
 const path = require("path");
