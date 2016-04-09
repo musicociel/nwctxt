@@ -24,28 +24,56 @@
 "use strict";
 
 const lowlevelGenerator = require("./lowlevel/generator");
+const createProcessors = require("./createProcessors");
 
-const quotedFields = {
-  "SongInfo|Title": true,
-  "SongInfo|Author": true,
-  "SongInfo|Lyricist": true,
-  "SongInfo|Copyright1": true,
-  "SongInfo|Copyright2": true,
-  "SongInfo|Comments": true,
-  "Font|Typeface": true,
-  "AddStaff|Name": true,
-  "AddStaff|Label": true,
-  "AddStaff|Group": true
-};
-exports.quotedFields = quotedFields;
-
-function areQuotesNeeded(instructionName, fieldName) {
-  if (fieldName === "Text") {
-    return true;
+function defaultProcessField(instruction, field) {
+  const value = field.value;
+  if (value === true) {
+    field.value = "Y";
+  } else if (value === false) {
+    field.value = "N";
+  } else {
+    field.value = String(value);
   }
-  return quotedFields[`${instructionName}|${fieldName}`] || false;
 }
-exports.areQuotesNeeded = areQuotesNeeded;
+exports.defaultProcessField = defaultProcessField;
+
+function processQuotedField(instruction, field) {
+  field.quoted = true;
+}
+
+function processPos(value) {
+  return `${value.accidental || ""}${value.position}${value.head}${value.tie ? "^" : ""}`;
+}
+
+function processSinglePosField(instruction, field) {
+  field.value = processPos(field.value);
+}
+
+function processMultiPosField(instruction, field) {
+  field.value = field.value.map(processPos).join(",");
+}
+
+const processFieldMap = {
+  "Text": processQuotedField,
+  "SongInfo|Title": processQuotedField,
+  "SongInfo|Author": processQuotedField,
+  "SongInfo|Lyricist": processQuotedField,
+  "SongInfo|Copyright1": processQuotedField,
+  "SongInfo|Copyright2": processQuotedField,
+  "SongInfo|Comments": processQuotedField,
+  "Font|Typeface": processQuotedField,
+  "AddStaff|Name": processQuotedField,
+  "AddStaff|Label": processQuotedField,
+  "AddStaff|Group": processQuotedField,
+  "Pos": processSinglePosField,
+  "Chord|Pos": processMultiPosField,
+  "Chord|Pos2": processMultiPosField
+};
+exports.processFieldMap = processFieldMap;
+
+const processField = createProcessors.createProcessField(processFieldMap, defaultProcessField);
+exports.processField = processField;
 
 function separateFields(instruction) {
   const fieldsMap = instruction.fields;
@@ -53,9 +81,10 @@ function separateFields(instruction) {
   for (const fieldName of Object.keys(fieldsMap)) {
     const curField = {
       name: fieldName,
-      value: String(fieldsMap[fieldName]),
-      quoted: areQuotesNeeded(instruction.name, fieldName)
+      value: fieldsMap[fieldName],
+      quoted: false
     };
+    processField(instruction, curField);
     fields.push(curField);
   }
   return {

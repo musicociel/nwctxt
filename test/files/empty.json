@@ -6,85 +6,85 @@
   "StaffItalic": {
    "Typeface": "Times New Roman",
    "Size": 10,
-   "Bold": "Y",
-   "Italic": "Y",
+   "Bold": true,
+   "Italic": true,
    "CharSet": 0
   },
   "StaffBold": {
    "Typeface": "Times New Roman",
    "Size": 8,
-   "Bold": "Y",
-   "Italic": "N",
+   "Bold": true,
+   "Italic": false,
    "CharSet": 0
   },
   "StaffLyric": {
    "Typeface": "Times New Roman",
    "Size": 7.2,
-   "Bold": "N",
-   "Italic": "N",
+   "Bold": false,
+   "Italic": false,
    "CharSet": 0
   },
   "PageTitleText": {
    "Typeface": "Times New Roman",
    "Size": 24,
-   "Bold": "Y",
-   "Italic": "N",
+   "Bold": true,
+   "Italic": false,
    "CharSet": 0
   },
   "PageText": {
    "Typeface": "Times New Roman",
    "Size": 12,
-   "Bold": "N",
-   "Italic": "N",
+   "Bold": false,
+   "Italic": false,
    "CharSet": 0
   },
   "PageSmallText": {
    "Typeface": "Times New Roman",
    "Size": 8,
-   "Bold": "N",
-   "Italic": "N",
+   "Bold": false,
+   "Italic": false,
    "CharSet": 0
   },
   "User1": {
    "Typeface": "Times New Roman",
    "Size": 8,
-   "Bold": "N",
-   "Italic": "N",
+   "Bold": false,
+   "Italic": false,
    "CharSet": 0
   },
   "User2": {
    "Typeface": "Times New Roman",
    "Size": 8,
-   "Bold": "N",
-   "Italic": "N",
+   "Bold": false,
+   "Italic": false,
    "CharSet": 0
   },
   "User3": {
    "Typeface": "Times New Roman",
    "Size": 8,
-   "Bold": "N",
-   "Italic": "N",
+   "Bold": false,
+   "Italic": false,
    "CharSet": 0
   },
   "User4": {
    "Typeface": "Times New Roman",
    "Size": 8,
-   "Bold": "N",
-   "Italic": "N",
+   "Bold": false,
+   "Italic": false,
    "CharSet": 0
   },
   "User5": {
    "Typeface": "Times New Roman",
    "Size": 8,
-   "Bold": "N",
-   "Italic": "N",
+   "Bold": false,
+   "Italic": false,
    "CharSet": 0
   },
   "User6": {
    "Typeface": "Times New Roman",
    "Size": 8,
-   "Bold": "N",
-   "Italic": "N",
+   "Bold": false,
+   "Italic": false,
    "CharSet": 0
   }
  },
@@ -104,11 +104,11 @@
   "PgSetup": {
    "StaffSize": 16,
    "Zoom": 4,
-   "TitlePage": "Y",
-   "JustifyVertically": "Y",
-   "PrintSystemSepMark": "N",
-   "ExtendLastSystem": "N",
-   "DurationPadding": "Y",
+   "TitlePage": true,
+   "JustifyVertically": true,
+   "PrintSystemSepMark": false,
+   "ExtendLastSystem": false,
+   "DurationPadding": true,
    "PageNumbers": 0,
    "StaffLabels": "None",
    "BarNumbers": "None",
@@ -119,7 +119,7 @@
    "Top": 1.27,
    "Right": 1.27,
    "Bottom": 1.27,
-   "Mirror": "N"
+   "Mirror": false
   }
  },
  "staffs": [
@@ -131,12 +131,12 @@
     },
     "StaffProperties": {
      "EndingBar": "Section Close",
-     "Visible": "Y",
+     "Visible": true,
      "BoundaryTop": 12,
      "BoundaryBottom": 12,
      "Lines": 5,
      "Color": "Default",
-     "Muted": "N",
+     "Muted": false,
      "Volume": 127,
      "StereoPan": 64,
      "Device": 0,

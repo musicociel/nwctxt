@@ -23,26 +23,74 @@
  */
 "use strict";
 const lowlevelParser = require("./lowlevel/parser");
+const createProcessors = require("./createProcessors");
 
 const onlyBlank = /^\s*$/;
 
-function aggregateInstructionFields(instruction) {
+function defaultProcessField(instruction, field) {
+  const value = field.value;
+  if (field.quoted) {
+    return value;
+  } else if (value === "Y") {
+    return true;
+  } else if (value === "N") {
+    return false;
+  } else {
+    const tryNumber = onlyBlank.test(value) ? NaN : Number(value);
+    return isNaN(tryNumber) ? value : tryNumber;
+  }
+}
+exports.defaultProcessField = defaultProcessField;
+
+const posField = /^([bvxn#])?(-?\d+)([a-z])?(\^)?$/i;
+
+function singlePos(value) {
+  const parsedPos = posField.exec(value);
+  if (!parsedPos) {
+    throw new Error(`Unrecognized position: ${value}`);
+  }
+  return {
+    accidental: parsedPos[1] || null,
+    position: Number(parsedPos[2]),
+    head: parsedPos[3] || "",
+    tie: !!parsedPos[4]
+  };
+}
+
+function processSinglePosField(instruction, field) {
+  return singlePos(field.value);
+}
+
+function processMultiPosField(instruction, field) {
+  return field.value.split(",").map(singlePos);
+}
+
+const processFieldMap = {
+  "Pos": processSinglePosField,
+  "Chord|Pos": processMultiPosField,
+  "Chord|Pos2": processMultiPosField
+};
+exports.processFieldMap = processFieldMap;
+
+const processField = createProcessors.createProcessField(processFieldMap, defaultProcessField);
+exports.processField = processField;
+
+function aggregateFields(instruction) {
   const fieldsArray = instruction.fields;
   const fieldsObject = {};
   for (const field of fieldsArray) {
-    if (field.name in fieldsObject) {
-      throw new Error(`Duplicate field: ${field.name}`);
+    const fieldName = field.name || "";
+    if (fieldName in fieldsObject) {
+      throw new Error(`Duplicate field: ${fieldName}`);
     }
-    const value = field.value;
-    const tryNumber = onlyBlank.test(value) ? NaN : Number(value);
-    fieldsObject[field.name || ""] = isNaN(tryNumber) ? value : tryNumber;
+    fieldsObject[fieldName] = processField(instruction, field);
   }
   return {
     name: instruction.name,
     fields: fieldsObject
   };
 }
-exports.aggregateInstructionFields = aggregateInstructionFields;
+exports.aggregateFields = aggregateFields;
 
 function emptyStaff() {
   return {
@@ -61,7 +109,7 @@ function getCurrentStaff(song) {
 }
 
 function storeInstructionOn(instruction, object) {
-  instruction = aggregateInstructionFields(instruction);
+  instruction = aggregateFields(instruction);
   const properties = object.properties;
   let fields = properties[instruction.name];
   if (!fields) {
@@ -70,13 +118,15 @@ function storeInstructionOn(instruction, object) {
   Object.assign(fields, instruction.fields);
 }
 const storeInstructionOnRoot = storeInstructionOn;
+
 function storeInstructionOnStaff(instruction, song) {
   storeInstructionOn(instruction, getCurrentStaff(song));
 }
 
 function defaultProcessInstruction(instruction, song) {
-  getCurrentStaff(song).music.push(aggregateInstructionFields(instruction));
+  getCurrentStaff(song).music.push(aggregateFields(instruction));
 }
+exports.defaultProcessInstruction = defaultProcessInstruction;
 
 const processInstructionMap = {
   "SongInfo": storeInstructionOnRoot,
@@ -84,7 +134,7 @@ const processInstructionMap = {
   "PgSetup": storeInstructionOnRoot,
   "PgMargins": storeInstructionOnRoot,
   "Font": function(instruction, song) {
-    const fields = aggregateInstructionFields(instruction).fields;
+    const fields = aggregateFields(instruction).fields;
     const style = fields.Style;
     delete fields.Style;
     song.fonts[style] = fields;
@@ -97,7 +147,7 @@ const processInstructionMap = {
   "StaffInstrument": storeInstructionOnStaff,
   "Lyrics": storeInstructionOnStaff,
   "Lyric1": function (instruction, song) {
-    instruction = aggregateInstructionFields(instruction);
+    instruction = aggregateFields(instruction);
     const lyrics = getCurrentStaff(song).lyrics;
     const verseNumber = Number(instruction.name.slice(5)) - 1;
     if (!lyrics[verseNumber]) {
@@ -108,16 +158,7 @@ const processInstructionMap = {
 };
 exports.processInstructionMap = processInstructionMap;
 
-const lyricN = /^Lyric\d+$/;
-
-function processInstruction(instruction, song) {
-  let instructionKey = instruction.name;
-  if (lyricN.test(instructionKey)) {
-    instructionKey = "Lyric1";
-  }
-  const processFn = processInstructionMap[instructionKey] || defaultProcessInstruction;
-  processFn(instruction, song);
-}
+const processInstruction = createProcessors.createProcessInstruction(processInstructionMap, defaultProcessInstruction);
 exports.processInstruction = processInstruction;
 
 function aggregateInstructions (parsedContent) {

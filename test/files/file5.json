@@ -91,14 +91,14 @@
  "properties": {
   "Editor": {
    "ActiveStaff": 1,
-   "CaretIndex": 5,
-   "CaretPos": -2
+   "CaretIndex": 7,
+   "CaretPos": -29
   },
   "SongInfo": {
-   "Title": "Test: \"with\" { } | [ ] \\ / 'special' _ - `chars`",
-   "Author": "Test",
+   "Title": "",
+   "Author": "<Name>",
    "Lyricist": "",
-   "Copyright1": "Copyright © 2016 Test",
+   "Copyright1": "Copyright © 2016 <Name>",
    "Copyright2": "All Rights Reserved"
   },
   "PgSetup": {
@@ -133,7 +133,7 @@
      "EndingBar": "Section Close",
      "Visible": true,
      "BoundaryTop": 12,
-     "BoundaryBottom": 16,
+     "BoundaryBottom": 12,
      "Lines": 5,
      "Color": "Default",
      "Muted": false,
@@ -145,38 +145,13 @@
     "StaffInstrument": {
      "Trans": 0,
      "DynVel": "10,30,45,60,75,92,108,127"
-    },
-    "Lyrics": {
-     "Placement": "Bottom",
-     "Align": "Standard Rules",
-     "Offset": 0
     }
    },
    "music": [
     {
      "name": "Clef",
      "fields": {
-      "Type": "Treble"
-     }
-    },
-    {
-     "name": "Key",
-     "fields": {
-      "Signature": "F#",
-      "Tonic": "G"
-     }
-    },
-    {
-     "name": "TimeSig",
-     "fields": {
-      "Signature": "4/4"
-     }
-    },
-    {
-     "name": "Rest",
-     "fields": {
-      "Dur": "4th",
-      "Opts": "Stem=Down"
+      "Type": "Percussion"
      }
     },
     {
@@ -185,11 +160,34 @@
       "Dur": "4th",
       "Pos": {
        "accidental": null,
-       "position": -2,
-       "head": "",
+       "position": 0,
+       "head": "x",
        "tie": false
-      },
-      "Opts": "Stem=Down"
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": "8th",
+      "Pos": {
+       "accidental": null,
+       "position": 0,
+       "head": "x",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": "8th",
+      "Pos": {
+       "accidental": null,
+       "position": 0,
+       "head": "Y",
+       "tie": false
+      }
      }
     },
     {
@@ -198,11 +196,10 @@
       "Dur": "4th",
       "Pos": {
        "accidental": null,
-       "position": -4,
-       "head": "",
+       "position": 0,
+       "head": "a",
        "tie": false
-      },
-      "Opts": "Stem=Down"
+      }
      }
     },
     {
@@ -211,19 +208,14 @@
       "Dur": "4th",
       "Pos": {
        "accidental": null,
-       "position": -6,
-       "head": "",
+       "position": 0,
+       "head": "b",
        "tie": false
-      },
-      "Opts": "Stem=Down"
+      }
      }
     }
    ],
-   "lyrics": [
-    {
-     "Text": "G E C\n"
-    }
-   ]
+   "lyrics": []
   }
  ]
 }

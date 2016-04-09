@@ -26,7 +26,12 @@
      "fields": {
       "Base": "Half",
       "Tempo": 52,
-      "Pos": 12,
+      "Pos": {
+       "accidental": null,
+       "position": 12,
+       "head": "",
+       "tie": false
+      },
       "Placement": "AsStaffSignature"
      }
     },
@@ -40,7 +45,12 @@
      "name": "User",
      "fields": {
       "": "ChordPlay.nw",
-      "Pos": 7,
+      "Pos": {
+       "accidental": null,
+       "position": 7,
+       "head": "",
+       "tie": false
+      },
       "Name": "Fm",
       "Span": 3
      }
@@ -49,14 +59,24 @@
      "name": "Note",
      "fields": {
       "Dur": "Half",
-      "Pos": -3
+      "Pos": {
+       "accidental": null,
+       "position": -3,
+       "head": "",
+       "tie": false
+      }
      }
     },
     {
      "name": "Note",
      "fields": {
       "Dur": "Half",
-      "Pos": 1
+      "Pos": {
+       "accidental": null,
+       "position": 1,
+       "head": "",
+       "tie": false
+      }
      }
     }
    ],
