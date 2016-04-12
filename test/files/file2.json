@@ -48,7 +48,9 @@
     {
      "name": "Note",
      "fields": {
-      "Dur": "Half",
+      "Dur": {
+       "Dur": "Half"
+      },
       "Pos": {
        "accidental": null,
        "position": -3,
@@ -60,7 +62,9 @@
     {
      "name": "Note",
      "fields": {
-      "Dur": "Half",
+      "Dur": {
+       "Dur": "Half"
+      },
       "Pos": {
        "accidental": null,
        "position": 1,

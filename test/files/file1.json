@@ -175,14 +175,18 @@
     {
      "name": "Rest",
      "fields": {
-      "Dur": "4th",
+      "Dur": {
+       "Dur": "4th"
+      },
       "Opts": "Stem=Down"
      }
     },
     {
      "name": "Note",
      "fields": {
-      "Dur": "4th",
+      "Dur": {
+       "Dur": "4th"
+      },
       "Pos": {
        "accidental": null,
        "position": -2,
@@ -195,7 +199,9 @@
     {
      "name": "Note",
      "fields": {
-      "Dur": "4th",
+      "Dur": {
+       "Dur": "4th"
+      },
       "Pos": {
        "accidental": null,
        "position": -4,
@@ -208,7 +214,9 @@
     {
      "name": "Note",
      "fields": {
-      "Dur": "4th",
+      "Dur": {
+       "Dur": "4th"
+      },
       "Pos": {
        "accidental": null,
        "position": -6,

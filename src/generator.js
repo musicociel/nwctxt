@@ -54,6 +54,13 @@ function processMultiPosField(instruction, field) {
   field.value = field.value.map(processPos).join(",");
 }
 
+function processDur(instruction, field) {
+  const value = field.value;
+  const fields = Object.keys(value).filter(field => value[field] === true);
+  fields.unshift(value.Dur);
+  field.value = fields.join(",");
+}
+
 const processFieldMap = {
   "Text": processQuotedField,
   "SongInfo|Title": processQuotedField,
@@ -68,7 +75,10 @@ const processFieldMap = {
   "AddStaff|Group": processQuotedField,
   "Note|Pos": processSinglePosField,
   "Chord|Pos": processMultiPosField,
-  "Chord|Pos2": processMultiPosField
+  "Chord|Pos2": processMultiPosField,
+  "Note|Dur": processDur,
+  "Chord|Dur": processDur,
+  "Rest|Dur": processDur
 };
 exports.processFieldMap = processFieldMap;
 
