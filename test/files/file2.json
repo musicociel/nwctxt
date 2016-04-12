@@ -26,12 +26,7 @@
      "fields": {
       "Base": "Half",
       "Tempo": 52,
-      "Pos": {
-       "accidental": null,
-       "position": 12,
-       "head": "",
-       "tie": false
-      },
+      "Pos": 12,
       "Placement": "AsStaffSignature"
      }
     },
@@ -45,12 +40,7 @@
      "name": "User",
      "fields": {
       "": "ChordPlay.nw",
-      "Pos": {
-       "accidental": null,
-       "position": 7,
-       "head": "",
-       "tie": false
-      },
+      "Pos": 7,
       "Name": "Fm",
       "Span": 3
      }

@@ -904,12 +904,7 @@
     {
      "name": "SustainPedal",
      "fields": {
-      "Pos": {
-       "accidental": null,
-       "position": -16,
-       "head": "",
-       "tie": false
-      },
+      "Pos": -16,
       "Wide": true
      }
     },
@@ -953,12 +948,7 @@
      "name": "SustainPedal",
      "fields": {
       "Status": "Released",
-      "Pos": {
-       "accidental": null,
-       "position": -16,
-       "head": "",
-       "tie": false
-      },
+      "Pos": -16,
       "Wide": true
      }
     }

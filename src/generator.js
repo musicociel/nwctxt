@@ -66,7 +66,7 @@ const processFieldMap = {
   "AddStaff|Name": processQuotedField,
   "AddStaff|Label": processQuotedField,
   "AddStaff|Group": processQuotedField,
-  "Pos": processSinglePosField,
+  "Note|Pos": processSinglePosField,
   "Chord|Pos": processMultiPosField,
   "Chord|Pos2": processMultiPosField
 };

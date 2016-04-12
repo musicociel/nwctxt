@@ -66,7 +66,7 @@ function processMultiPosField(instruction, field) {
 }
 
 const processFieldMap = {
-  "Pos": processSinglePosField,
+  "Note|Pos": processSinglePosField,
   "Chord|Pos": processMultiPosField,
   "Chord|Pos2": processMultiPosField
 };
