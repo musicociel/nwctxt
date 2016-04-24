@@ -32,10 +32,9 @@ const nwctxt = require("../../src");
 function createChecker(parser, generator) {
   return function (fileContent) {
     const parsedFile1 = parser.parse(fileContent);
-    const generatedFile1 = generator.generate(parsedFile1);
-    const parsedFile2 = parser.parse(generatedFile1);
-    const generatedFile2 = generator.generate(parsedFile2);
-    assert.strictEqual(generatedFile1, generatedFile2);
+    const generatedFile = generator.generate(parsedFile1);
+    const parsedFile2 = parser.parse(generatedFile);
+    assert.deepStrictEqual(parsedFile1, parsedFile2);
   };
 }
 
