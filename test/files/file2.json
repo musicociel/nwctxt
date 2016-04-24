@@ -17,7 +17,12 @@
     {
      "name": "Key",
      "fields": {
-      "Signature": "Bb,Eb,Ab,Db",
+      "Signature": [
+       "Bb",
+       "Eb",
+       "Ab",
+       "Db"
+      ],
       "Tonic": "A"
      }
     },

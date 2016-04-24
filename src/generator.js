@@ -61,6 +61,11 @@ function processDur(instruction, field) {
   field.value = fields.join(",");
 }
 
+function joinArray(instruction, field) {
+  const value = field.value;
+  field.value = value.join(",");
+}
+
 const processFieldMap = {
   "Text": processQuotedField,
   "SongInfo|Title": processQuotedField,
@@ -78,7 +83,8 @@ const processFieldMap = {
   "Chord|Pos2": processMultiPosField,
   "Note|Dur": processDur,
   "Chord|Dur": processDur,
-  "Rest|Dur": processDur
+  "Rest|Dur": processDur,
+  "Key|Signature": joinArray
 };
 exports.processFieldMap = processFieldMap;
 

@@ -157,7 +157,9 @@
     {
      "name": "Key",
      "fields": {
-      "Signature": "F#",
+      "Signature": [
+       "F#"
+      ],
       "Tonic": "G"
      }
     },

@@ -1,0 +1,539 @@
+{
+ "version": "2.75",
+ "clip": false,
+ "extra": null,
+ "fonts": {
+  "StaffItalic": {
+   "Typeface": "Times New Roman",
+   "Size": 10,
+   "Bold": true,
+   "Italic": true,
+   "CharSet": 0
+  },
+  "StaffBold": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": true,
+   "Italic": false,
+   "CharSet": 0
+  },
+  "StaffLyric": {
+   "Typeface": "Times New Roman",
+   "Size": 7.2,
+   "Bold": false,
+   "Italic": false,
+   "CharSet": 0
+  },
+  "PageTitleText": {
+   "Typeface": "Times New Roman",
+   "Size": 24,
+   "Bold": true,
+   "Italic": false,
+   "CharSet": 0
+  },
+  "PageText": {
+   "Typeface": "Times New Roman",
+   "Size": 12,
+   "Bold": false,
+   "Italic": false,
+   "CharSet": 0
+  },
+  "PageSmallText": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": false,
+   "Italic": false,
+   "CharSet": 0
+  },
+  "User1": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": false,
+   "Italic": false,
+   "CharSet": 0
+  },
+  "User2": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": false,
+   "Italic": false,
+   "CharSet": 0
+  },
+  "User3": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": false,
+   "Italic": false,
+   "CharSet": 0
+  },
+  "User4": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": false,
+   "Italic": false,
+   "CharSet": 0
+  },
+  "User5": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": false,
+   "Italic": false,
+   "CharSet": 0
+  },
+  "User6": {
+   "Typeface": "Times New Roman",
+   "Size": 8,
+   "Bold": false,
+   "Italic": false,
+   "CharSet": 0
+  }
+ },
+ "properties": {
+  "Editor": {
+   "ActiveStaff": 1,
+   "CaretIndex": 33,
+   "CaretPos": 0
+  },
+  "SongInfo": {
+   "Title": "",
+   "Author": "<Name>",
+   "Lyricist": "",
+   "Copyright1": "Copyright © 2016 <Name>",
+   "Copyright2": "All Rights Reserved"
+  },
+  "PgSetup": {
+   "StaffSize": 16,
+   "Zoom": 4,
+   "TitlePage": true,
+   "JustifyVertically": true,
+   "PrintSystemSepMark": false,
+   "ExtendLastSystem": false,
+   "DurationPadding": true,
+   "PageNumbers": 0,
+   "StaffLabels": "None",
+   "BarNumbers": "None",
+   "StartingBar": 1
+  },
+  "PgMargins": {
+   "Left": 1.27,
+   "Top": 1.27,
+   "Right": 1.27,
+   "Bottom": 1.27,
+   "Mirror": false
+  }
+ },
+ "staffs": [
+  {
+   "properties": {
+    "AddStaff": {
+     "Name": "Staff",
+     "Group": "Standard"
+    },
+    "StaffProperties": {
+     "EndingBar": "Section Close",
+     "Visible": true,
+     "BoundaryTop": 12,
+     "BoundaryBottom": 12,
+     "Lines": 5,
+     "Color": "Default",
+     "Muted": false,
+     "Volume": 127,
+     "StereoPan": 64,
+     "Device": 0,
+     "Channel": 1
+    },
+    "StaffInstrument": {
+     "Trans": 0,
+     "DynVel": "10,30,45,60,75,92,108,127"
+    }
+   },
+   "music": [
+    {
+     "name": "Clef",
+     "fields": {
+      "Type": "Treble"
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": -6,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": -5,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": -4,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": -3,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Bar",
+     "fields": {}
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": -2,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": -1,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": 0,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": 1,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Bar",
+     "fields": {
+      "Style": "Double"
+     }
+    },
+    {
+     "name": "Key",
+     "fields": {
+      "Signature": [
+       "F#"
+      ],
+      "Tonic": "G"
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": -2,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": -1,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": 0,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": 1,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Bar",
+     "fields": {}
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": 2,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": 3,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": 4,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": 5,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Bar",
+     "fields": {
+      "Style": "Double"
+     }
+    },
+    {
+     "name": "Key",
+     "fields": {
+      "Signature": [
+       "C"
+      ],
+      "Tonic": "C"
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": -6,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": -5,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": -4,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": -3,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Bar",
+     "fields": {}
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": -2,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": -1,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": 0,
+       "head": "",
+       "tie": false
+      }
+     }
+    },
+    {
+     "name": "Note",
+     "fields": {
+      "Dur": {
+       "Dur": "4th"
+      },
+      "Pos": {
+       "accidental": null,
+       "position": 1,
+       "head": "",
+       "tie": false
+      }
+     }
+    }
+   ],
+   "lyrics": []
+  }
+ ]
+}

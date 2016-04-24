@@ -61,6 +61,10 @@ function processSinglePosField(instruction, field) {
   return singlePos(field.value);
 }
 
+function splitArray(instruction, field) {
+  return field.value.split(",");
+}
+
 function processMultiPosField(instruction, field) {
   return field.value.split(",").map(singlePos);
 }
@@ -82,7 +86,8 @@ const processFieldMap = {
   "Chord|Pos2": processMultiPosField,
   "Note|Dur": processDur,
   "Chord|Dur": processDur,
-  "Rest|Dur": processDur
+  "Rest|Dur": processDur,
+  "Key|Signature": splitArray
 };
 exports.processFieldMap = processFieldMap;
 

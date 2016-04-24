@@ -157,7 +157,11 @@
     {
      "name": "Key",
      "fields": {
-      "Signature": "F#,C#,G#",
+      "Signature": [
+       "F#",
+       "C#",
+       "G#"
+      ],
       "Tonic": "A"
      }
     },
