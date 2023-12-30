@@ -21,13 +21,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-"use strict";
 
 import * as lowlevelGenerator from "./lowlevel/generator";
 import { createProcessField } from "./createProcessors";
-import type { LowLevelNWCTXTField } from "./lowlevel/types";
+import type { LowLevelNWCTXTField, LowLevelNWCTXTFile, LowLevelNWCTXTInstruction } from "./lowlevel/types";
+import type { NWCTXTFile, NWCTXTPosition, NWCTXTStaff } from "./types";
 
-export function defaultProcessField(instruction, field) {
+type FutureLowLevelNWCTXTField = Omit<LowLevelNWCTXTField, "value"> & { value: any };
+
+export const defaultProcessField = (instruction: any, field: FutureLowLevelNWCTXTField) => {
   const value = field.value;
   if (value === true) {
     field.value = "Y";
@@ -36,35 +38,35 @@ export function defaultProcessField(instruction, field) {
   } else {
     field.value = String(value);
   }
-}
+};
 
-function processQuotedField(instruction, field) {
+const processQuotedField = (instruction: any, field: FutureLowLevelNWCTXTField) => {
   field.quoted = true;
-}
+};
 
-function processPos(value) {
+const processPos = (value: NWCTXTPosition): string => {
   return `${value.accidental || ""}${value.position}${value.head}${value.tie ? "^" : ""}`;
-}
+};
 
-function processSinglePosField(instruction, field) {
+const processSinglePosField = (instruction: any, field: FutureLowLevelNWCTXTField) => {
   field.value = processPos(field.value);
-}
+};
 
-function processMultiPosField(instruction, field) {
+const processMultiPosField = (instruction: any, field: FutureLowLevelNWCTXTField) => {
   field.value = field.value.map(processPos).join(",");
-}
+};
 
-function processDur(instruction, field) {
+const processDur = (instruction: any, field: FutureLowLevelNWCTXTField) => {
   const value = field.value;
   const fields = Object.keys(value).filter((field) => value[field] === true);
   fields.unshift(value.Dur);
   field.value = fields.join(",");
-}
+};
 
-function joinArray(instruction, field) {
+const joinArray = (instruction: any, field: FutureLowLevelNWCTXTField) => {
   const value = field.value;
   field.value = value.join(",");
-}
+};
 
 export const processFieldMap = {
   Text: processQuotedField,
@@ -89,7 +91,7 @@ export const processFieldMap = {
 
 export const processField = createProcessField(processFieldMap, defaultProcessField);
 
-export function separateFields(instruction) {
+export const separateFields = (instruction: { fields: Record<string, any>; name: string }): LowLevelNWCTXTInstruction => {
   const fieldsMap = instruction.fields;
   const fields: LowLevelNWCTXTField[] = [];
   for (const fieldName of Object.keys(fieldsMap)) {
@@ -105,9 +107,9 @@ export function separateFields(instruction) {
     name: instruction.name,
     fields: fields
   };
-}
+};
 
-function appendProperties(properties, instructions) {
+const appendProperties = (properties: Record<string, any>, instructions: LowLevelNWCTXTInstruction[]) => {
   for (const instructionName of Object.keys(properties)) {
     instructions.push(
       separateFields({
@@ -116,10 +118,10 @@ function appendProperties(properties, instructions) {
       })
     );
   }
-}
+};
 
-function appendFonts(fonts, instructions) {
-  for (const style of Object.keys(fonts)) {
+const appendFonts = (fonts: NWCTXTFile["fonts"], instructions: LowLevelNWCTXTInstruction[]) => {
+  for (const style of Object.keys(fonts) as (string & keyof typeof fonts)[]) {
     instructions.push(
       separateFields({
         name: "Font",
@@ -132,9 +134,9 @@ function appendFonts(fonts, instructions) {
       })
     );
   }
-}
+};
 
-function appendLyrics(lyrics, instructions) {
+const appendLyrics = (lyrics: NWCTXTStaff["lyrics"], instructions: LowLevelNWCTXTInstruction[]) => {
   let number = 1;
   for (const verse of lyrics) {
     instructions.push(
@@ -145,16 +147,16 @@ function appendLyrics(lyrics, instructions) {
     );
     number++;
   }
-}
+};
 
-function appendMusic(music, instructions) {
+const appendMusic = (music: NWCTXTStaff["music"], instructions: LowLevelNWCTXTInstruction[]) => {
   for (const instruction of music) {
     instructions.push(separateFields(instruction));
   }
-}
+};
 
-export function separateInstructions(song) {
-  const instructions = [];
+export const separateInstructions = (song: NWCTXTFile): LowLevelNWCTXTFile => {
+  const instructions: LowLevelNWCTXTInstruction[] = [];
   appendProperties(song.properties, instructions);
   appendFonts(song.fonts, instructions);
   for (const staff of song.staffs) {
@@ -168,8 +170,8 @@ export function separateInstructions(song) {
     extra: song.extra,
     instructions
   };
-}
+};
 
-export function generate(song) {
+export function generate(song: NWCTXTFile): string {
   return lowlevelGenerator.generate(separateInstructions(song));
 }

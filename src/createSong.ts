@@ -21,11 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-"use strict";
 
 import { parse } from "./parser";
 import { emptyNWCTXT } from "./emptyNWCTXT";
 
-export function createSong() {
-  return parse(emptyNWCTXT);
-}
+export const createSong = () => parse(emptyNWCTXT);

@@ -27,3 +27,4 @@ export * as parser from "./parser";
 export * as generator from "./generator";
 export * from "./createSong";
 export * from "./emptyNWCTXT";
+export type * from "./types";
