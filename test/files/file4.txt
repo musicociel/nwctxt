@@ -1,0 +1,310 @@
+{
+  "clip": false,
+  "extra": null,
+  "fonts": {
+    "PageSmallText": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+    "PageText": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 12,
+      "Typeface": "Times New Roman",
+    },
+    "PageTitleText": {
+      "Bold": true,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 24,
+      "Typeface": "Times New Roman",
+    },
+    "StaffBold": {
+      "Bold": true,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+    "StaffItalic": {
+      "Bold": true,
+      "CharSet": 0,
+      "Italic": true,
+      "Size": 10,
+      "Typeface": "Times New Roman",
+    },
+    "StaffLyric": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 7.2,
+      "Typeface": "Times New Roman",
+    },
+    "User1": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+    "User2": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+    "User3": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+    "User4": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+    "User5": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+    "User6": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+  },
+  "properties": {
+    "Editor": {
+      "ActiveStaff": 1,
+      "CaretIndex": 4,
+      "CaretPos": -6,
+    },
+    "PgMargins": {
+      "Bottom": 1.27,
+      "Left": 1.27,
+      "Mirror": false,
+      "Right": 1.27,
+      "Top": 1.27,
+    },
+    "PgSetup": {
+      "BarNumbers": "None",
+      "DurationPadding": true,
+      "ExtendLastSystem": false,
+      "JustifyVertically": true,
+      "PageNumbers": 0,
+      "PrintSystemSepMark": false,
+      "StaffLabels": "None",
+      "StaffSize": 16,
+      "StartingBar": 1,
+      "TitlePage": true,
+      "Zoom": 4,
+    },
+    "SongInfo": {
+      "Author": "<Name>",
+      "Copyright1": "Copyright © 2016 <Name>",
+      "Copyright2": "All Rights Reserved",
+      "Lyricist": "",
+      "Title": "",
+    },
+  },
+  "staffs": [
+    {
+      "lyrics": [],
+      "music": [
+        {
+          "fields": {
+            "Type": "Treble",
+          },
+          "name": "Clef",
+        },
+        {
+          "fields": {
+            "Signature": [
+              "F#",
+              "C#",
+              "G#",
+            ],
+            "Tonic": "A",
+          },
+          "name": "Key",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Dur": "4th",
+            },
+            "Dur2": "Half",
+            "Opts": "Stem=Up",
+            "Pos": [
+              {
+                "accidental": null,
+                "head": "",
+                "position": 1,
+                "tie": false,
+              },
+              {
+                "accidental": null,
+                "head": "",
+                "position": 3,
+                "tie": false,
+              },
+              {
+                "accidental": "n",
+                "head": "",
+                "position": 5,
+                "tie": false,
+              },
+            ],
+            "Pos2": [
+              {
+                "accidental": null,
+                "head": "",
+                "position": -8,
+                "tie": false,
+              },
+              {
+                "accidental": "n",
+                "head": "",
+                "position": -6,
+                "tie": true,
+              },
+              {
+                "accidental": "#",
+                "head": "",
+                "position": -4,
+                "tie": false,
+              },
+              {
+                "accidental": null,
+                "head": "",
+                "position": -2,
+                "tie": false,
+              },
+            ],
+          },
+          "name": "Chord",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Dur": "4th",
+            },
+            "Opts": "Stem=Up",
+            "Pos": {
+              "accidental": null,
+              "head": "",
+              "position": 4,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Dur": "4th",
+            },
+            "Dur2": "Half",
+            "Opts": "Stem=Up",
+            "Pos": [
+              {
+                "accidental": null,
+                "head": "",
+                "position": 2,
+                "tie": false,
+              },
+              {
+                "accidental": null,
+                "head": "",
+                "position": 4,
+                "tie": false,
+              },
+            ],
+            "Pos2": [
+              {
+                "accidental": null,
+                "head": "",
+                "position": -6,
+                "tie": false,
+              },
+              {
+                "accidental": null,
+                "head": "",
+                "position": -5,
+                "tie": false,
+              },
+              {
+                "accidental": null,
+                "head": "",
+                "position": -3,
+                "tie": false,
+              },
+            ],
+          },
+          "name": "Chord",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Dur": "4th",
+            },
+            "Opts": "Stem=Up",
+            "Pos": [
+              {
+                "accidental": null,
+                "head": "",
+                "position": 3,
+                "tie": false,
+              },
+              {
+                "accidental": null,
+                "head": "",
+                "position": 4,
+                "tie": false,
+              },
+            ],
+          },
+          "name": "Chord",
+        },
+      ],
+      "properties": {
+        "AddStaff": {
+          "Group": "Standard",
+          "Name": "Staff",
+        },
+        "StaffInstrument": {
+          "DynVel": "10,30,45,60,75,92,108,127",
+          "Trans": 0,
+        },
+        "StaffProperties": {
+          "BoundaryBottom": 12,
+          "BoundaryTop": 12,
+          "Channel": 1,
+          "Color": "Default",
+          "Device": 0,
+          "EndingBar": "Section Close",
+          "Lines": 5,
+          "Muted": false,
+          "StereoPan": 64,
+          "Visible": true,
+          "Volume": 127,
+        },
+      },
+    },
+  ],
+  "version": "2.75",
+}

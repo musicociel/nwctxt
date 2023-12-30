@@ -2,23 +2,61 @@
   "name": "nwctxt",
   "version": "0.0.3",
   "description": "Parser and generator for the nwctxt file format used by Note Worthy Composer.",
-  "main": "src/index.js",
-  "scripts": {
-    "prepublish": "webpack",
-    "lint": "eslint src test *.js",
-    "test": "npm run lint && node test"
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./lowlevel": {
+      "default": "./dist/lowlevel/index.js",
+      "types": "./dist/lowlevel/index.d.ts"
+    },
+    "./lowlevel/parser": {
+      "default": "./dist/lowlevel/parser.js",
+      "types": "./dist/lowlevel/parser.d.ts"
+    },
+    "./lowlevel/generator": {
+      "default": "./dist/lowlevel/generator.js",
+      "types": "./dist/lowlevel/generator.d.ts"
+    },
+    "./parser": {
+      "default": "./dist/parser.js",
+      "types": "./dist/parser.d.ts"
+    },
+    "./generator": {
+      "default": "./dist/generator.js",
+      "types": "./dist/generator.d.ts"
+    }
   },
-  "author": "DivDE <divde@laposte.net>",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc && tsc --project test/tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "tdd": "vitest",
+    "format:check": "prettier . --list-different",
+    "format:fix": "prettier . --write"
+  },
+  "author": "DivDE <divde@musicociel.fr>",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.7.6",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.6.0",
-    "eslint": "^2.7.0",
-    "webpack": "^1.12.14"
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/davdiv/nwctxt.git"
+    "url": "https://github.com/musicociel/nwctxt.git"
   }
 }

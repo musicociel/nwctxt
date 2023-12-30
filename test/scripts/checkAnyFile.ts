@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2016 DivDE <divde@laposte.net>
+ * Copyright (c) 2023 DivDE <divde@musicociel.fr>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,29 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-"use strict";
 
 // Small command line tool allowing to test the parser/generator on a set of files.
 
-const assert = require("assert");
-const fs = require("fs");
-const nwctxt = require("../../src");
+import assert from "assert";
+import fs from "fs";
+import * as nwctxt from "../../src";
 
-function createChecker(parser, generator) {
+function createChecker(parse, generate) {
   return function (fileContent) {
-    const parsedFile1 = parser.parse(fileContent);
-    const generatedFile = generator.generate(parsedFile1);
-    const parsedFile2 = parser.parse(generatedFile);
+    const parsedFile1 = parse(fileContent);
+    const generatedFile = generate(parsedFile1);
+    const parsedFile2 = parse(generatedFile);
     assert.deepStrictEqual(parsedFile1, parsedFile2);
   };
 }
 
-const checker = createChecker(nwctxt.parser, nwctxt.generator);
-const lowLevelChecker = createChecker(nwctxt.lowlevel.parser, nwctxt.lowlevel.generator);
+const checker = createChecker(nwctxt.parser.parse, nwctxt.generator.generate);
+const lowLevelChecker = createChecker(nwctxt.lowlevel.parse, nwctxt.lowlevel.generate);
 
 let errors = 0;
 let successes = 0;
-process.argv.slice(2).forEach(fileName => {
+process.argv.slice(2).forEach((fileName) => {
   process.stdout.write(`Checking ${fileName}\n`);
   const fileContent = fs.readFileSync(fileName, "utf-8");
   try {

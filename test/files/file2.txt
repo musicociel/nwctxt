@@ -1,0 +1,85 @@
+{
+  "clip": true,
+  "extra": "Single",
+  "fonts": {},
+  "properties": {},
+  "staffs": [
+    {
+      "lyrics": [],
+      "music": [
+        {
+          "fields": {
+            "Type": "Treble",
+          },
+          "name": "Clef",
+        },
+        {
+          "fields": {
+            "Signature": [
+              "Bb",
+              "Eb",
+              "Ab",
+              "Db",
+            ],
+            "Tonic": "A",
+          },
+          "name": "Key",
+        },
+        {
+          "fields": {
+            "Base": "Half",
+            "Placement": "AsStaffSignature",
+            "Pos": 12,
+            "Tempo": 52,
+          },
+          "name": "Tempo",
+        },
+        {
+          "fields": {
+            "Signature": "AllaBreve",
+          },
+          "name": "TimeSig",
+        },
+        {
+          "fields": {
+            "": "ChordPlay.nw",
+            "Name": "Fm",
+            "Pos": 7,
+            "Span": 3,
+          },
+          "name": "User",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Dur": "Half",
+            },
+            "Pos": {
+              "accidental": null,
+              "head": "",
+              "position": -3,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Dur": "Half",
+            },
+            "Pos": {
+              "accidental": null,
+              "head": "",
+              "position": 1,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+      ],
+      "properties": {},
+    },
+  ],
+  "version": "2.75",
+}

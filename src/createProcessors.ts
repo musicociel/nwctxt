@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2016 DivDE <divde@laposte.net>
+ * Copyright (c) 2023 DivDE <divde@musicociel.fr>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,17 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-"use strict";
 
-// Small command line tool allowing to convert a nwctxt file to its json representation
+const lyricN = /^Lyric\d+$/;
 
-const fs = require("fs");
-const nwctxt = require("../../src");
+export function getInstructionKey(instruction) {
+  let instructionKey = instruction.name;
+  if (lyricN.test(instructionKey)) {
+    instructionKey = "Lyric1";
+  }
+  return instructionKey;
+}
 
-const sourceFile = process.argv[2];
-const outputFile = process.argv[3];
-process.stdout.write(`${sourceFile} => ${outputFile}: `);
-const sourceFileContent = fs.readFileSync(sourceFile, "utf-8");
-const outputFileContent = JSON.stringify(nwctxt.parser.parse(sourceFileContent), null, " ");
-fs.writeFileSync(outputFile, outputFileContent, "utf-8");
-process.stdout.write(`OK\n`);
+export function createProcessInstruction(instructionsMap, defaultProcessInstruction) {
+  return function (instruction, ...args) {
+    const fn = instructionsMap[getInstructionKey(instruction)] || defaultProcessInstruction;
+    return fn(instruction, ...args);
+  };
+}
+
+export function createProcessField(fieldsMap, defaultProcessField) {
+  return function (instruction, field, ...args) {
+    const fieldName = field.name;
+    const fn = fieldsMap[`${getInstructionKey(instruction)}|${fieldName}`] || fieldsMap[fieldName] || defaultProcessField;
+    return fn(instruction, field, ...args);
+  };
+}

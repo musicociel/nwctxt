@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2016 DivDE <divde@laposte.net>
+ * Copyright (c) 2023 DivDE <divde@musicociel.fr>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,10 +23,11 @@
  */
 "use strict";
 
-const lowlevelGenerator = require("./lowlevel/generator");
-const createProcessors = require("./createProcessors");
+import * as lowlevelGenerator from "./lowlevel/generator";
+import { createProcessField } from "./createProcessors";
+import type { LowLevelNWCTXTField } from "./lowlevel/types";
 
-function defaultProcessField(instruction, field) {
+export function defaultProcessField(instruction, field) {
   const value = field.value;
   if (value === true) {
     field.value = "Y";
@@ -36,7 +37,6 @@ function defaultProcessField(instruction, field) {
     field.value = String(value);
   }
 }
-exports.defaultProcessField = defaultProcessField;
 
 function processQuotedField(instruction, field) {
   field.quoted = true;
@@ -56,7 +56,7 @@ function processMultiPosField(instruction, field) {
 
 function processDur(instruction, field) {
   const value = field.value;
-  const fields = Object.keys(value).filter(field => value[field] === true);
+  const fields = Object.keys(value).filter((field) => value[field] === true);
   fields.unshift(value.Dur);
   field.value = fields.join(",");
 }
@@ -66,8 +66,8 @@ function joinArray(instruction, field) {
   field.value = value.join(",");
 }
 
-const processFieldMap = {
-  "Text": processQuotedField,
+export const processFieldMap = {
+  Text: processQuotedField,
   "SongInfo|Title": processQuotedField,
   "SongInfo|Author": processQuotedField,
   "SongInfo|Lyricist": processQuotedField,
@@ -86,14 +86,12 @@ const processFieldMap = {
   "Rest|Dur": processDur,
   "Key|Signature": joinArray
 };
-exports.processFieldMap = processFieldMap;
 
-const processField = createProcessors.createProcessField(processFieldMap, defaultProcessField);
-exports.processField = processField;
+export const processField = createProcessField(processFieldMap, defaultProcessField);
 
-function separateFields(instruction) {
+export function separateFields(instruction) {
   const fieldsMap = instruction.fields;
-  const fields = [];
+  const fields: LowLevelNWCTXTField[] = [];
   for (const fieldName of Object.keys(fieldsMap)) {
     const curField = {
       name: fieldName,
@@ -108,35 +106,43 @@ function separateFields(instruction) {
     fields: fields
   };
 }
-exports.separateFields = separateFields;
 
 function appendProperties(properties, instructions) {
   for (const instructionName of Object.keys(properties)) {
-    instructions.push(separateFields({
-      name: instructionName,
-      fields: properties[instructionName]
-    }));
+    instructions.push(
+      separateFields({
+        name: instructionName,
+        fields: properties[instructionName]
+      })
+    );
   }
 }
 
 function appendFonts(fonts, instructions) {
   for (const style of Object.keys(fonts)) {
-    instructions.push(separateFields({
-      name: "Font",
-      fields: Object.assign({
-        "Style": style
-      }, fonts[style])
-    }));
+    instructions.push(
+      separateFields({
+        name: "Font",
+        fields: Object.assign(
+          {
+            Style: style
+          },
+          fonts[style]
+        )
+      })
+    );
   }
 }
 
 function appendLyrics(lyrics, instructions) {
   let number = 1;
   for (const verse of lyrics) {
-    instructions.push(separateFields({
-      name:`Lyric${number}`,
-      fields: verse
-    }));
+    instructions.push(
+      separateFields({
+        name: `Lyric${number}`,
+        fields: verse
+      })
+    );
     number++;
   }
 }
@@ -147,7 +153,7 @@ function appendMusic(music, instructions) {
   }
 }
 
-function separateInstructions(song) {
+export function separateInstructions(song) {
   const instructions = [];
   appendProperties(song.properties, instructions);
   appendFonts(song.fonts, instructions);
@@ -160,11 +166,10 @@ function separateInstructions(song) {
     clip: song.clip,
     version: song.version,
     extra: song.extra,
-    instructions: instructions
+    instructions
   };
 }
-exports.separateInstructions = separateInstructions;
 
-exports.generate = function (song) {
+export function generate(song) {
   return lowlevelGenerator.generate(separateInstructions(song));
-};
+}
