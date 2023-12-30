@@ -21,14 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-"use strict";
 
 import type { LowLevelNWCTXTField, LowLevelNWCTXTFile, LowLevelNWCTXTInstruction } from "./types";
 
 const lineBreak = /\r?\n/;
 const header = /^!NoteWorthyComposer(Clip)?\(([^),]+)(?:,([^)]*))?\)$/;
 const escapeSequence = /\\(.)/g;
-const replacement = {
+const replacement: Partial<Record<string, string>> = {
   '"': '"',
   "'": "'",
   n: "\n",
@@ -39,19 +38,17 @@ const replacement = {
 
 export class ParseError extends Error {}
 
-function escapeSequenceReplacer(all, escapedChar) {
+const escapeSequenceReplacer = (all: string, escapedChar: string) => {
   const res = replacement[escapedChar];
   if (!res) {
     throw new ParseError(escapedChar);
   }
   return res;
-}
+};
 
-function processQuotedValue(value) {
-  return value.replace(escapeSequence, escapeSequenceReplacer);
-}
+const processQuotedValue = (value: string) => value.replace(escapeSequence, escapeSequenceReplacer);
 
-export function parse(text: string): LowLevelNWCTXTFile {
+export const parse = (text: string): LowLevelNWCTXTFile => {
   const instructions: LowLevelNWCTXTInstruction[] = [];
   const result = {
     instructions: instructions
@@ -78,7 +75,7 @@ export function parse(text: string): LowLevelNWCTXTFile {
           value = processQuotedValue(value.slice(1, -1));
         }
         const field: LowLevelNWCTXTField = {
-          name: colon > -1 ? part.slice(0, colon) : null,
+          name: colon > -1 ? part.slice(0, colon) : "",
           value: value,
           quoted: quoted
         };
@@ -104,4 +101,4 @@ export function parse(text: string): LowLevelNWCTXTFile {
     throw new ParseError(line);
   }
   return result;
-}
+};

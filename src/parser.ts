@@ -24,11 +24,14 @@
 
 import * as lowlevelParser from "./lowlevel/parser";
 import { createProcessField, createProcessInstruction } from "./createProcessors";
-import type { LowLevelNWCTXTFile } from "./lowlevel/types";
+import type { LowLevelNWCTXTField, LowLevelNWCTXTFile, LowLevelNWCTXTInstruction } from "./lowlevel/types";
+import type { NWCTXTFile, NWCTXTBaseMusicItem, NWCTXTStaff, NWCTXTPosition, NWCTXTMusicItem, NWCTXTDuration, NWCTXTFontConfig } from "./types";
 
 const onlyBlank = /^\s*$/;
 
-export function defaultProcessField(instruction, field) {
+type ProcessField = (instruction: LowLevelNWCTXTInstruction, field: LowLevelNWCTXTField) => any;
+
+export const defaultProcessField: ProcessField = (instruction, field) => {
   const value = field.value;
   if (field.quoted) {
     return value;
@@ -40,11 +43,11 @@ export function defaultProcessField(instruction, field) {
     const tryNumber = onlyBlank.test(value) ? NaN : Number(value);
     return isNaN(tryNumber) ? value : tryNumber;
   }
-}
+};
 
 const posField = /^([bvxn#])?(-?\d+)([a-z])?(\^)?$/i;
 
-function singlePos(value) {
+const singlePos = (value: string): NWCTXTPosition => {
   const parsedPos = posField.exec(value);
   if (!parsedPos) {
     throw new Error(`Unrecognized position: ${value}`);
@@ -55,32 +58,32 @@ function singlePos(value) {
     head: parsedPos[3] || "",
     tie: !!parsedPos[4]
   };
-}
+};
 
-function processSinglePosField(instruction, field) {
+const processSinglePosField: ProcessField = (instruction, field) => {
   return singlePos(field.value);
-}
+};
 
-function splitArray(instruction, field) {
+const splitArray: ProcessField = (instruction, field) => {
   return field.value.split(",");
-}
+};
 
-function processMultiPosField(instruction, field) {
+const processMultiPosField: ProcessField = (instruction, field) => {
   return field.value.split(",").map(singlePos);
-}
+};
 
-function processDur(instruction, field) {
+const processDur: ProcessField = (instruction, field): NWCTXTDuration => {
   const parts = field.value.split(",");
-  const res = {
-    Dur: parts.shift()
+  const res: NWCTXTDuration = {
+    Dur: parts.shift()!
   };
   for (const part of parts) {
-    res[part] = true;
+    (res as any)[part] = true;
   }
   return res;
-}
+};
 
-export const processFieldMap = {
+export const processFieldMap: Record<string, ProcessField> = {
   "Note|Pos": processSinglePosField,
   "Chord|Pos": processMultiPosField,
   "Chord|Pos2": processMultiPosField,
@@ -92,7 +95,7 @@ export const processFieldMap = {
 
 export const processField = createProcessField(processFieldMap, defaultProcessField);
 
-export function aggregateFields(instruction) {
+export function aggregateFields(instruction: LowLevelNWCTXTInstruction): NWCTXTBaseMusicItem {
   const fieldsArray = instruction.fields;
   const fieldsObject: Record<string, any> = {};
   for (const field of fieldsArray) {
@@ -108,7 +111,7 @@ export function aggregateFields(instruction) {
   };
 }
 
-function emptyStaff() {
+function emptyStaff(): NWCTXTStaff {
   return {
     properties: {},
     music: [],
@@ -116,7 +119,7 @@ function emptyStaff() {
   };
 }
 
-function getCurrentStaff(song) {
+function getCurrentStaff(song: NWCTXTFile): NWCTXTStaff {
   const staffs = song.staffs;
   if (staffs.length === 0) {
     staffs.push(emptyStaff());
@@ -124,33 +127,35 @@ function getCurrentStaff(song) {
   return staffs[staffs.length - 1];
 }
 
-function storeInstructionOn(instruction, object) {
-  instruction = aggregateFields(instruction);
+const storeInstructionOn = (rawInstruction: LowLevelNWCTXTInstruction, object: { properties: Record<string, any> }) => {
+  const instruction = aggregateFields(rawInstruction);
   const properties = object.properties;
   let fields = properties[instruction.name];
   if (!fields) {
     fields = properties[instruction.name] = {};
   }
   Object.assign(fields, instruction.fields);
-}
+};
 const storeInstructionOnRoot = storeInstructionOn;
 
-function storeInstructionOnStaff(instruction, song) {
+const storeInstructionOnStaff = (instruction: LowLevelNWCTXTInstruction, song: NWCTXTFile) => {
   storeInstructionOn(instruction, getCurrentStaff(song));
-}
+};
 
-export function defaultProcessInstruction(instruction, song) {
-  getCurrentStaff(song).music.push(aggregateFields(instruction));
-}
+type ProcessInstruction = (instruction: LowLevelNWCTXTInstruction, song: NWCTXTFile) => void;
 
-export const processInstructionMap = {
+export const defaultProcessInstruction: ProcessInstruction = (instruction, song) => {
+  getCurrentStaff(song).music.push(aggregateFields(instruction) as NWCTXTMusicItem);
+};
+
+export const processInstructionMap: Record<string, ProcessInstruction> = {
   SongInfo: storeInstructionOnRoot,
   Editor: storeInstructionOnRoot,
   PgSetup: storeInstructionOnRoot,
   PgMargins: storeInstructionOnRoot,
   Font: function (instruction, song) {
-    const fields = aggregateFields(instruction).fields;
-    const style = fields.Style;
+    const fields = aggregateFields(instruction).fields as NWCTXTFontConfig & { Style?: keyof typeof song.fonts };
+    const style = fields.Style!;
     delete fields.Style;
     song.fonts[style] = fields;
   },
@@ -161,8 +166,8 @@ export const processInstructionMap = {
   StaffProperties: storeInstructionOnStaff,
   StaffInstrument: storeInstructionOnStaff,
   Lyrics: storeInstructionOnStaff,
-  Lyric1: function (instruction, song) {
-    instruction = aggregateFields(instruction);
+  Lyric1: function (rawInstruction, song) {
+    const instruction = aggregateFields(rawInstruction);
     const lyrics = getCurrentStaff(song).lyrics;
     const verseNumber = Number(instruction.name.slice(5)) - 1;
     if (!lyrics[verseNumber]) {
@@ -174,8 +179,8 @@ export const processInstructionMap = {
 
 export const processInstruction = createProcessInstruction(processInstructionMap, defaultProcessInstruction);
 
-export function aggregateInstructions(parsedContent: LowLevelNWCTXTFile) {
-  const song = {
+export function aggregateInstructions(parsedContent: LowLevelNWCTXTFile): NWCTXTFile {
+  const song: NWCTXTFile = {
     version: parsedContent.version,
     clip: parsedContent.clip,
     extra: parsedContent.extra,
@@ -189,7 +194,7 @@ export function aggregateInstructions(parsedContent: LowLevelNWCTXTFile) {
   return song;
 }
 
-export function parse(fileContent: string) {
+export function parse(fileContent: string): NWCTXTFile {
   const parsedFile = lowlevelParser.parse(fileContent);
   return aggregateInstructions(parsedFile);
 }

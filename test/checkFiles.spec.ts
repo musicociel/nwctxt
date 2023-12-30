@@ -24,11 +24,16 @@
 "use strict";
 
 import { describe, it, assert, expect } from "vitest";
+import schema from "../dist/schema.json";
 import * as nwctxt from "../src";
 
 import fs from "fs";
 import path from "path";
 
+import Ajv from "ajv";
+const ajv = new Ajv();
+
+const validate = ajv.compile<nwctxt.NWCTXTFile>(schema);
 const filesFolder = path.join(__dirname, "files");
 const nwctxtExtension = /\.nwctxt$/i;
 
@@ -37,13 +42,15 @@ describe(`parser/generator on files in ${filesFolder}`, () => {
     if (nwctxtExtension.test(nwctxtFile)) {
       it(nwctxtFile, async () => {
         // Check the parser:
-        const nwctxtFileContent = fs.readFileSync(path.join(filesFolder, nwctxtFile), "utf-8");
+        const nwctxtFileContent = await fs.promises.readFile(path.join(filesFolder, nwctxtFile), "utf-8");
         if (nwctxtFile === "empty.nwctxt") {
           assert.strictEqual(nwctxtFileContent.replace(/\r\n/g, "\n"), nwctxt.emptyNWCTXT.replace(/\r\n/g, "\n"));
         }
         const parseResult = nwctxt.parser.parse(nwctxtFileContent);
         const jsonFileContent = JSON.stringify(parseResult);
         await expect(parseResult).toMatchFileSnapshot(path.join(filesFolder, nwctxtFile.replace(nwctxtExtension, ".txt")));
+        const isValid = validate(parseResult);
+        expect(isValid, JSON.stringify(validate.errors, null, " ")).toBe(true);
         if (nwctxtFile === "empty.nwctxt") {
           assert.deepStrictEqual(parseResult, nwctxt.createSong());
         }

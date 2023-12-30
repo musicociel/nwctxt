@@ -2,7 +2,7 @@ export interface LowLevelNWCTXTField {
   /**
    * Name of the field
    */
-  name: string | null;
+  name: string;
 
   /**
    * Value of the field
@@ -31,7 +31,7 @@ export interface LowLevelNWCTXTInstruction {
 export interface LowLevelNWCTXTFile {
   /**
    * Note Worthy Composer version as a string
-   * @example "2.75"
+   * @example "2.751"
    */
   version: string;
 

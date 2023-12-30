@@ -24,25 +24,31 @@
 
 const lyricN = /^Lyric\d+$/;
 
-export function getInstructionKey(instruction) {
+export const getInstructionKey = (instruction: { name: string }) => {
   let instructionKey = instruction.name;
   if (lyricN.test(instructionKey)) {
     instructionKey = "Lyric1";
   }
   return instructionKey;
-}
+};
 
-export function createProcessInstruction(instructionsMap, defaultProcessInstruction) {
-  return function (instruction, ...args) {
+export const createProcessInstruction =
+  <I extends { name: string }, T extends any[], R>(
+    instructionsMap: Record<string, (instruction: I, ...args: T) => R>,
+    defaultProcessInstruction: (instruction: I, ...args: T) => R
+  ) =>
+  (instruction: I, ...args: T) => {
     const fn = instructionsMap[getInstructionKey(instruction)] || defaultProcessInstruction;
     return fn(instruction, ...args);
   };
-}
 
-export function createProcessField(fieldsMap, defaultProcessField) {
-  return function (instruction, field, ...args) {
+export const createProcessField =
+  <I extends { name: string }, F extends { name: string }, T extends any[], R>(
+    fieldsMap: Record<string, (instruction: I, field: F, ...args: T) => R>,
+    defaultProcessField: (instruction: I, field: F, ...args: T) => R
+  ) =>
+  (instruction: I, field: F, ...args: T): R => {
     const fieldName = field.name;
     const fn = fieldsMap[`${getInstructionKey(instruction)}|${fieldName}`] || fieldsMap[fieldName] || defaultProcessField;
     return fn(instruction, field, ...args);
   };
-}

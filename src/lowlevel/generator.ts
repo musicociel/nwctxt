@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-"use strict";
 
 import type { LowLevelNWCTXTFile, LowLevelNWCTXTInstruction } from "./types";
 
@@ -32,17 +31,16 @@ const singleQuote = /'/g;
 const cr = /\r/g;
 const lf = /\n/g;
 
-function quote(value) {
-  return `"${value
+const quote = (value: string) =>
+  `"${value
     .replace(backslash, "\\]")
     .replace(pipe, "\\}")
     .replace(doubleQuote, '\\"')
     .replace(singleQuote, "\\'")
     .replace(cr, "\\r")
     .replace(lf, "\\n")}"`;
-}
 
-function processLine(lineInfo: LowLevelNWCTXTInstruction): string {
+const processLine = (lineInfo: LowLevelNWCTXTInstruction): string => {
   const res = [`|${lineInfo.name}`];
   const fields = lineInfo.fields;
   fields.forEach((field) => {
@@ -57,12 +55,12 @@ function processLine(lineInfo: LowLevelNWCTXTInstruction): string {
     res.push(value);
   });
   return res.join("");
-}
+};
 
-export function generate(parsedFile: LowLevelNWCTXTFile): string {
+export const generate = (parsedFile: LowLevelNWCTXTFile): string => {
   const clip = parsedFile.clip ? "Clip" : "";
   const extra = parsedFile.extra ? `,${parsedFile.extra}` : "";
   return `!NoteWorthyComposer${clip}(${parsedFile.version}${extra})\r\n${parsedFile.instructions
     .map(processLine)
     .join("\r\n")}\r\n!NoteWorthyComposer${clip}-End\r\n`;
-}
+};
