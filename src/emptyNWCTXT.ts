@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2016 DivDE <divde@laposte.net>
+ * Copyright (c) 2023 DivDE <divde@musicociel.fr>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,9 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-"use strict";
 
-module.exports = `!NoteWorthyComposer(2.75)
+export const emptyNWCTXT = `!NoteWorthyComposer(2.75)
 |Editor|ActiveStaff:1|CaretIndex:1|CaretPos:0
 |SongInfo|Title:""|Author:""|Lyricist:""|Copyright1:""|Copyright2:""
 |PgSetup|StaffSize:16|Zoom:4|TitlePage:Y|JustifyVertically:Y|PrintSystemSepMark:N|ExtendLastSystem:N|DurationPadding:Y|PageNumbers:0|StaffLabels:None|BarNumbers:None|StartingBar:1

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2016 DivDE <divde@laposte.net>
+ * Copyright (c) 2023 DivDE <divde@musicociel.fr>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,13 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-"use strict";
-const lowlevelParser = require("./lowlevel/parser");
-const createProcessors = require("./createProcessors");
+
+import * as lowlevelParser from "./lowlevel/parser";
+import { createProcessField, createProcessInstruction } from "./createProcessors";
+import type { LowLevelNWCTXTFile } from "./lowlevel/types";
 
 const onlyBlank = /^\s*$/;
 
-function defaultProcessField(instruction, field) {
+export function defaultProcessField(instruction, field) {
   const value = field.value;
   if (field.quoted) {
     return value;
@@ -40,7 +41,6 @@ function defaultProcessField(instruction, field) {
     return isNaN(tryNumber) ? value : tryNumber;
   }
 }
-exports.defaultProcessField = defaultProcessField;
 
 const posField = /^([bvxn#])?(-?\d+)([a-z])?(\^)?$/i;
 
@@ -80,7 +80,7 @@ function processDur(instruction, field) {
   return res;
 }
 
-const processFieldMap = {
+export const processFieldMap = {
   "Note|Pos": processSinglePosField,
   "Chord|Pos": processMultiPosField,
   "Chord|Pos2": processMultiPosField,
@@ -89,14 +89,12 @@ const processFieldMap = {
   "Rest|Dur": processDur,
   "Key|Signature": splitArray
 };
-exports.processFieldMap = processFieldMap;
 
-const processField = createProcessors.createProcessField(processFieldMap, defaultProcessField);
-exports.processField = processField;
+export const processField = createProcessField(processFieldMap, defaultProcessField);
 
-function aggregateFields(instruction) {
+export function aggregateFields(instruction) {
   const fieldsArray = instruction.fields;
-  const fieldsObject = {};
+  const fieldsObject: Record<string, any> = {};
   for (const field of fieldsArray) {
     const fieldName = field.name || "";
     if (fieldName in fieldsObject) {
@@ -109,7 +107,6 @@ function aggregateFields(instruction) {
     fields: fieldsObject
   };
 }
-exports.aggregateFields = aggregateFields;
 
 function emptyStaff() {
   return {
@@ -142,30 +139,29 @@ function storeInstructionOnStaff(instruction, song) {
   storeInstructionOn(instruction, getCurrentStaff(song));
 }
 
-function defaultProcessInstruction(instruction, song) {
+export function defaultProcessInstruction(instruction, song) {
   getCurrentStaff(song).music.push(aggregateFields(instruction));
 }
-exports.defaultProcessInstruction = defaultProcessInstruction;
 
-const processInstructionMap = {
-  "SongInfo": storeInstructionOnRoot,
-  "Editor": storeInstructionOnRoot,
-  "PgSetup": storeInstructionOnRoot,
-  "PgMargins": storeInstructionOnRoot,
-  "Font": function(instruction, song) {
+export const processInstructionMap = {
+  SongInfo: storeInstructionOnRoot,
+  Editor: storeInstructionOnRoot,
+  PgSetup: storeInstructionOnRoot,
+  PgMargins: storeInstructionOnRoot,
+  Font: function (instruction, song) {
     const fields = aggregateFields(instruction).fields;
     const style = fields.Style;
     delete fields.Style;
     song.fonts[style] = fields;
   },
-  "AddStaff": function (instruction, song) {
+  AddStaff: function (instruction, song) {
     song.staffs.push(emptyStaff());
     storeInstructionOnStaff(instruction, song);
   },
-  "StaffProperties": storeInstructionOnStaff,
-  "StaffInstrument": storeInstructionOnStaff,
-  "Lyrics": storeInstructionOnStaff,
-  "Lyric1": function (instruction, song) {
+  StaffProperties: storeInstructionOnStaff,
+  StaffInstrument: storeInstructionOnStaff,
+  Lyrics: storeInstructionOnStaff,
+  Lyric1: function (instruction, song) {
     instruction = aggregateFields(instruction);
     const lyrics = getCurrentStaff(song).lyrics;
     const verseNumber = Number(instruction.name.slice(5)) - 1;
@@ -175,12 +171,10 @@ const processInstructionMap = {
     Object.assign(lyrics[verseNumber], instruction.fields);
   }
 };
-exports.processInstructionMap = processInstructionMap;
 
-const processInstruction = createProcessors.createProcessInstruction(processInstructionMap, defaultProcessInstruction);
-exports.processInstruction = processInstruction;
+export const processInstruction = createProcessInstruction(processInstructionMap, defaultProcessInstruction);
 
-function aggregateInstructions (parsedContent) {
+export function aggregateInstructions(parsedContent: LowLevelNWCTXTFile) {
   const song = {
     version: parsedContent.version,
     clip: parsedContent.clip,
@@ -189,15 +183,13 @@ function aggregateInstructions (parsedContent) {
     properties: {},
     staffs: []
   };
-  for (let instruction of parsedContent.instructions) {
+  for (const instruction of parsedContent.instructions) {
     processInstruction(instruction, song);
   }
   return song;
 }
-exports.aggregateInstructions = aggregateInstructions;
 
-function parse (fileContent) {
+export function parse(fileContent: string) {
   const parsedFile = lowlevelParser.parse(fileContent);
   return aggregateInstructions(parsedFile);
 }
-exports.parse = parse;

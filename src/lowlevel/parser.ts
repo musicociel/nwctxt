@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2016 DivDE <divde@laposte.net>
+ * Copyright (c) 2023 DivDE <divde@musicociel.fr>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,20 +23,21 @@
  */
 "use strict";
 
+import type { LowLevelNWCTXTField, LowLevelNWCTXTFile, LowLevelNWCTXTInstruction } from "./types";
+
 const lineBreak = /\r?\n/;
 const header = /^!NoteWorthyComposer(Clip)?\(([^),]+)(?:,([^)]*))?\)$/;
 const escapeSequence = /\\(.)/g;
 const replacement = {
-  "\"": "\"",
-  "\'": "\'",
-  "n": "\n",
-  "r": "\r",
+  '"': '"',
+  "'": "'",
+  n: "\n",
+  r: "\r",
   "}": "|",
   "]": "\\"
 };
 
-class ParseError extends Error {}
-exports.ParseError = ParseError;
+export class ParseError extends Error {}
 
 function escapeSequenceReplacer(all, escapedChar) {
   const res = replacement[escapedChar];
@@ -50,11 +51,11 @@ function processQuotedValue(value) {
   return value.replace(escapeSequence, escapeSequenceReplacer);
 }
 
-exports.parse = function (text) {
-  const instructions = [];
+export function parse(text: string): LowLevelNWCTXTFile {
+  const instructions: LowLevelNWCTXTInstruction[] = [];
   const result = {
     instructions: instructions
-  };
+  } as LowLevelNWCTXTFile;
   const lines = text.split(lineBreak);
   let state = 0; // 0 = before header, 1 = between header and footer, 2 = after footer
   let expectedFooter;
@@ -64,19 +65,19 @@ exports.parse = function (text) {
       continue;
     } else if (line[0] === "|" && state === 1) {
       const lineParts = line.split("|");
-      const fields = [];
-      const item = {
+      const fields: LowLevelNWCTXTField[] = [];
+      const item: LowLevelNWCTXTInstruction = {
         name: lineParts[1],
         fields: fields
       };
       for (const part of lineParts.slice(2)) {
         const colon = part.indexOf(":");
         let value = colon > -1 ? part.slice(colon + 1) : part;
-        const quoted = value.length >= 2 && value[0] == "\"" && value[value.length - 1] == "\"";
+        const quoted = value.length >= 2 && value[0] == '"' && value[value.length - 1] == '"';
         if (quoted) {
           value = processQuotedValue(value.slice(1, -1));
         }
-        const field = {
+        const field: LowLevelNWCTXTField = {
           name: colon > -1 ? part.slice(0, colon) : null,
           value: value,
           quoted: quoted
@@ -88,7 +89,7 @@ exports.parse = function (text) {
     } else if (state == 0) {
       const matchLine = header.exec(line);
       if (matchLine) {
-        result.clip = !! matchLine[1];
+        result.clip = !!matchLine[1];
         result.version = matchLine[2];
         result.extra = matchLine[3] || null;
         expectedFooter = `!NoteWorthyComposer${result.clip ? "Clip" : ""}-End`;
@@ -103,4 +104,4 @@ exports.parse = function (text) {
     throw new ParseError(line);
   }
   return result;
-};
+}

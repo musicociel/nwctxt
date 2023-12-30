@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2016 DivDE <divde@laposte.net>
+ * Copyright (c) 2023 DivDE <divde@musicociel.fr>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,17 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-"use strict";
 
-// Small command line tool allowing to convert a JSON representation to the nwctxt format
-
-const fs = require("fs");
-const nwctxt = require("../../src");
-
-const sourceFile = process.argv[2];
-const outputFile = process.argv[3];
-process.stdout.write(`${sourceFile} => ${outputFile}: `);
-const sourceFileContent = fs.readFileSync(sourceFile, "utf-8");
-const outputFileContent = nwctxt.generator.generate(JSON.parse(sourceFileContent));
-fs.writeFileSync(outputFile, outputFileContent, "utf-8");
-process.stdout.write(`OK\n`);
+export * from "./parser";
+export * from "./generator";
+export type * from "./types";

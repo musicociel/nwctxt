@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2016 DivDE <divde@laposte.net>
+ * Copyright (c) 2023 DivDE <divde@musicociel.fr>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,36 +23,15 @@
  */
 "use strict";
 
-const backslash = /\\/g;
-const pipe = /\|/g;
-const doubleQuote = /"/g;
-const singleQuote = /'/g;
-const cr = /\r/g;
-const lf = /\n/g;
+// Small command line tool allowing to convert a nwctxt file to its json representation
 
-function quote(value) {
-  return `"${value.replace(backslash, "\\]").replace(pipe, "\\}").replace(doubleQuote, "\\\"").replace(singleQuote, "\\\'").replace(cr, "\\r").replace(lf, "\\n")}"`;
-}
+import fs from "fs";
+import * as nwctxt from "../../src";
 
-function processLine (lineInfo) {
-  const res = [`|${lineInfo.name}`];
-  const fields = lineInfo.fields;
-  fields.forEach(field => {
-    res.push("|");
-    if (field.name) {
-      res.push(`${field.name}:`);
-    }
-    let value = field.value;
-    if (field.quoted) {
-      value = quote(value);
-    }
-    res.push(value);
-  });
-  return res.join("");
-}
-
-exports.generate = function (parsedFile) {
-  const clip = parsedFile.clip ? "Clip" : "";
-  const extra = parsedFile.extra ? `,${parsedFile.extra}` : "";
-  return `!NoteWorthyComposer${clip}(${parsedFile.version}${extra})\r\n${parsedFile.instructions.map(processLine).join("\r\n")}\r\n!NoteWorthyComposer${clip}-End\r\n`;
-};
+const sourceFile = process.argv[2];
+const outputFile = process.argv[3];
+process.stdout.write(`${sourceFile} => ${outputFile}: `);
+const sourceFileContent = fs.readFileSync(sourceFile, "utf-8");
+const outputFileContent = JSON.stringify(nwctxt.parser.parse(sourceFileContent), null, " ");
+fs.writeFileSync(outputFile, outputFileContent, "utf-8");
+process.stdout.write(`OK\n`);

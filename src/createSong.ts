@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2016 DivDE <divde@laposte.net>
+ * Copyright (c) 2023 DivDE <divde@musicociel.fr>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,9 @@
  */
 "use strict";
 
-exports.lowlevel = require("./lowlevel");
-exports.parser = require("./parser");
-exports.generator = require("./generator");
-exports.createSong = require("./createSong");
-exports.emptyNWCTXT = require("./emptyNWCTXT");
+import { parse } from "./parser";
+import { emptyNWCTXT } from "./emptyNWCTXT";
+
+export function createSong() {
+  return parse(emptyNWCTXT);
+}
