@@ -23,7 +23,7 @@
  */
 "use strict";
 
-import { describe, it, assert, expect } from "vitest";
+import { describe, it, expect } from "vitest";
 import schema from "../dist/schema.json";
 import * as nwctxt from "../src";
 
@@ -44,7 +44,7 @@ describe(`parser/generator on files in ${filesFolder}`, () => {
         // Check the parser:
         const nwctxtFileContent = await fs.promises.readFile(path.join(filesFolder, nwctxtFile), "utf-8");
         if (nwctxtFile === "empty.nwctxt") {
-          assert.strictEqual(nwctxtFileContent.replace(/\r\n/g, "\n"), nwctxt.emptyNWCTXT.replace(/\r\n/g, "\n"));
+          expect(nwctxtFileContent.replace(/\r\n/g, "\n")).toBe(nwctxt.emptyNWCTXT.replace(/\r\n/g, "\n"));
         }
         const parseResult = nwctxt.parser.parse(nwctxtFileContent);
         const jsonFileContent = JSON.stringify(parseResult);
@@ -52,13 +52,13 @@ describe(`parser/generator on files in ${filesFolder}`, () => {
         const isValid = validate(parseResult);
         expect(isValid, JSON.stringify(validate.errors, null, " ")).toBe(true);
         if (nwctxtFile === "empty.nwctxt") {
-          assert.deepStrictEqual(parseResult, nwctxt.createSong());
+          expect(parseResult).toStrictEqual(nwctxt.createSong());
         }
 
         // Check the generator (with the help of the parser):
         const generatedContent = nwctxt.generator.generate(JSON.parse(jsonFileContent));
         const secondParseResult = nwctxt.parser.parse(generatedContent);
-        assert.deepStrictEqual(secondParseResult, JSON.parse(jsonFileContent));
+        expect(secondParseResult).toStrictEqual(JSON.parse(jsonFileContent));
       });
     }
   });
