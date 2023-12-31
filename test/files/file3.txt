@@ -1067,7 +1067,16 @@
           "Name": "Staff",
         },
         "StaffInstrument": {
-          "DynVel": "10,30,45,60,75,92,108,127",
+          "DynVel": [
+            10,
+            30,
+            45,
+            60,
+            75,
+            92,
+            108,
+            127,
+          ],
           "Trans": 0,
         },
         "StaffProperties": {

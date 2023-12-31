@@ -68,29 +68,42 @@ const splitArray: ProcessField = (instruction, field) => {
   return field.value.split(",");
 };
 
+const splitNumberArray: ProcessField = (instruction, field) => {
+  return field.value.split(",").map((value) => +value);
+};
+
 const processMultiPosField: ProcessField = (instruction, field) => {
   return field.value.split(",").map(singlePos);
 };
+
+const optsArray = <T extends Record<string, any>>(array: string[], res: T): T => {
+  for (const part of array) {
+    const equal = part.indexOf("=");
+    const name = equal > -1 ? part.substring(0, equal) : part;
+    (res as any)[name] = equal > -1 ? part.substring(equal + 1) : true;
+  }
+  return res;
+};
+
+const processOpts: ProcessField = (instruction, field) => optsArray(field.value.split(","), {});
 
 const processDur: ProcessField = (instruction, field): NWCTXTDuration => {
   const parts = field.value.split(",");
   const res: NWCTXTDuration = {
     Dur: parts.shift()!
   };
-  for (const part of parts) {
-    (res as any)[part] = true;
-  }
-  return res;
+  return optsArray(parts, res);
 };
 
 export const processFieldMap: Record<string, ProcessField> = {
   "Note|Pos": processSinglePosField,
   "Chord|Pos": processMultiPosField,
   "Chord|Pos2": processMultiPosField,
-  "Note|Dur": processDur,
-  "Chord|Dur": processDur,
-  "Rest|Dur": processDur,
-  "Key|Signature": splitArray
+  Dur: processDur,
+  Dur2: processDur,
+  "Key|Signature": splitArray,
+  DynVel: splitNumberArray,
+  Opts: processOpts
 };
 
 export const processField = createProcessField(processFieldMap, defaultProcessField);

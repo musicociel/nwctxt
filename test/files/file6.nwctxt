@@ -1,4 +1,4 @@
-!NoteWorthyComposer(2.75)
+!NoteWorthyComposer(2.751)
 |Editor|ActiveStaff:1|CaretIndex:33|CaretPos:0
 |SongInfo|Title:""|Author:"<Name>"|Lyricist:""|Copyright1:"Copyright © 2016 <Name>"|Copyright2:"All Rights Reserved"
 |PgSetup|StaffSize:16|Zoom:4|TitlePage:Y|JustifyVertically:Y|PrintSystemSepMark:N|ExtendLastSystem:N|DurationPadding:Y|PageNumbers:0|StaffLabels:None|BarNumbers:None|StartingBar:1
@@ -51,4 +51,10 @@
 |Note|Dur:4th|Pos:-1
 |Note|Dur:4th|Pos:0
 |Note|Dur:4th|Pos:1
+|Bar
+|Note|Dur:4th|Pos:2
+|Note|Dur:4th|Pos:1
+|Note|Dur:4th,Triplet=First,Slur|Pos:1|Opts:Stem=Down
+|Note|Dur:4th,Triplet|Pos:2|Opts:Stem=Down
+|Note|Dur:4th,Triplet=End|Pos:3|Opts:Stem=Down
 !NoteWorthyComposer-End

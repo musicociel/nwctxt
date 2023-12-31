@@ -56,9 +56,22 @@ const processMultiPosField = (instruction: any, field: FutureLowLevelNWCTXTField
   field.value = field.value.map(processPos).join(",");
 };
 
+const optsValue = (value: Record<string, any>, excludeKey?: (key: string) => boolean) => {
+  return Object.keys(value)
+    .filter((field) => value[field] !== false && !excludeKey?.(field))
+    .map((field) => {
+      const valueField = value[field];
+      return valueField === true ? field : `${field}=${valueField}`;
+    });
+};
+
+const processOpts = (instruction: any, field: FutureLowLevelNWCTXTField) => {
+  field.value = optsValue(field.value).join(",");
+};
+
 const processDur = (instruction: any, field: FutureLowLevelNWCTXTField) => {
   const value = field.value;
-  const fields = Object.keys(value).filter((field) => value[field] === true);
+  const fields = optsValue(field.value, (field) => field === "Dur");
   fields.unshift(value.Dur);
   field.value = fields.join(",");
 };
@@ -83,9 +96,10 @@ export const processFieldMap = {
   "Note|Pos": processSinglePosField,
   "Chord|Pos": processMultiPosField,
   "Chord|Pos2": processMultiPosField,
-  "Note|Dur": processDur,
-  "Chord|Dur": processDur,
-  "Rest|Dur": processDur,
+  Dur: processDur,
+  Dur2: processDur,
+  Opts: processOpts,
+  DynVel: joinArray,
   "Key|Signature": joinArray
 };
 

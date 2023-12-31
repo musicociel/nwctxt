@@ -156,7 +156,9 @@
             "Dur": {
               "Dur": "4th",
             },
-            "Opts": "Stem=Down",
+            "Opts": {
+              "Stem": "Down",
+            },
           },
           "name": "Rest",
         },
@@ -165,7 +167,9 @@
             "Dur": {
               "Dur": "4th",
             },
-            "Opts": "Stem=Down",
+            "Opts": {
+              "Stem": "Down",
+            },
             "Pos": {
               "accidental": null,
               "head": "",
@@ -180,7 +184,9 @@
             "Dur": {
               "Dur": "4th",
             },
-            "Opts": "Stem=Down",
+            "Opts": {
+              "Stem": "Down",
+            },
             "Pos": {
               "accidental": null,
               "head": "",
@@ -195,7 +201,9 @@
             "Dur": {
               "Dur": "4th",
             },
-            "Opts": "Stem=Down",
+            "Opts": {
+              "Stem": "Down",
+            },
             "Pos": {
               "accidental": null,
               "head": "",
@@ -217,7 +225,16 @@
           "Placement": "Bottom",
         },
         "StaffInstrument": {
-          "DynVel": "10,30,45,60,75,92,108,127",
+          "DynVel": [
+            10,
+            30,
+            45,
+            60,
+            75,
+            92,
+            108,
+            127,
+          ],
           "Trans": 0,
         },
         "StaffProperties": {

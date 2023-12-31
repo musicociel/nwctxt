@@ -147,8 +147,12 @@
             "Dur": {
               "Dur": "4th",
             },
-            "Dur2": "Half",
-            "Opts": "Stem=Up",
+            "Dur2": {
+              "Dur": "Half",
+            },
+            "Opts": {
+              "Stem": "Up",
+            },
             "Pos": [
               {
                 "accidental": null,
@@ -203,7 +207,9 @@
             "Dur": {
               "Dur": "4th",
             },
-            "Opts": "Stem=Up",
+            "Opts": {
+              "Stem": "Up",
+            },
             "Pos": {
               "accidental": null,
               "head": "",
@@ -218,8 +224,12 @@
             "Dur": {
               "Dur": "4th",
             },
-            "Dur2": "Half",
-            "Opts": "Stem=Up",
+            "Dur2": {
+              "Dur": "Half",
+            },
+            "Opts": {
+              "Stem": "Up",
+            },
             "Pos": [
               {
                 "accidental": null,
@@ -262,7 +272,9 @@
             "Dur": {
               "Dur": "4th",
             },
-            "Opts": "Stem=Up",
+            "Opts": {
+              "Stem": "Up",
+            },
             "Pos": [
               {
                 "accidental": null,
@@ -287,7 +299,16 @@
           "Name": "Staff",
         },
         "StaffInstrument": {
-          "DynVel": "10,30,45,60,75,92,108,127",
+          "DynVel": [
+            10,
+            30,
+            45,
+            60,
+            75,
+            92,
+            108,
+            127,
+          ],
           "Trans": 0,
         },
         "StaffProperties": {

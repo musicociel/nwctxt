@@ -172,9 +172,9 @@ export interface NWCTXTStaff {
 
     StaffInstrument?: {
       /**
-       * @example "10,30,45,60,75,92,108,127"
+       * @example [10,30,45,60,75,92,108,127]
        */
-      DynVel?: string;
+      DynVel?: number[];
 
       /**
        * @example 0

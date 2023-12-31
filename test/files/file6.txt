@@ -509,6 +509,93 @@
           },
           "name": "Note",
         },
+        {
+          "fields": {},
+          "name": "Bar",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Dur": "4th",
+            },
+            "Pos": {
+              "accidental": null,
+              "head": "",
+              "position": 2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Dur": "4th",
+            },
+            "Pos": {
+              "accidental": null,
+              "head": "",
+              "position": 1,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Dur": "4th",
+              "Slur": true,
+              "Triplet": "First",
+            },
+            "Opts": {
+              "Stem": "Down",
+            },
+            "Pos": {
+              "accidental": null,
+              "head": "",
+              "position": 1,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Dur": "4th",
+              "Triplet": true,
+            },
+            "Opts": {
+              "Stem": "Down",
+            },
+            "Pos": {
+              "accidental": null,
+              "head": "",
+              "position": 2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Dur": "4th",
+              "Triplet": "End",
+            },
+            "Opts": {
+              "Stem": "Down",
+            },
+            "Pos": {
+              "accidental": null,
+              "head": "",
+              "position": 3,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
       ],
       "properties": {
         "AddStaff": {
@@ -516,7 +603,16 @@
           "Name": "Staff",
         },
         "StaffInstrument": {
-          "DynVel": "10,30,45,60,75,92,108,127",
+          "DynVel": [
+            10,
+            30,
+            45,
+            60,
+            75,
+            92,
+            108,
+            127,
+          ],
           "Trans": 0,
         },
         "StaffProperties": {
@@ -535,5 +631,5 @@
       },
     },
   ],
-  "version": "2.75",
+  "version": "2.751",
 }
