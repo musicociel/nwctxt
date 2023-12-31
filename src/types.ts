@@ -34,6 +34,7 @@ export interface NWCTXTBaseMusicItem {
 export interface NWCTXTOpts {
   Stem?: "Up" | "Down";
   Beam?: "First" | "End" | boolean;
+  BeamGrp?: boolean;
   ArticulationsOnStem?: boolean;
 }
 
@@ -283,7 +284,6 @@ export interface NWCTXTText {
      */
     Font?: string;
     /**
-     * @example -243
      * @example -7
      */
     Pos?: number;
@@ -355,8 +355,7 @@ export interface NWCTXTTempoVariance {
      */
     Pause?: number;
     /**
-     * @example -243
-     * @example -250
+     * @example 10
      */
     Pos?: number;
     /**
@@ -430,8 +429,7 @@ export interface NWCTXTPerformanceStyle {
      */
     Style?: string;
     /**
-     * @example -243
-     * @example -250
+     * @example 13
      */
     Pos?: number;
     /**
@@ -450,8 +448,7 @@ export interface NWCTXTDynamic {
      */
     Style?: string;
     /**
-     * @example -254
-     * @example -249
+     * @example 7
      * @example -1
      * @example 0
      */
