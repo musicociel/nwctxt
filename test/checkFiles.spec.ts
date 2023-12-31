@@ -23,7 +23,7 @@
  */
 "use strict";
 
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, afterAll } from "vitest";
 import schema from "../dist/schema.json";
 import * as nwctxt from "../src";
 
@@ -61,5 +61,28 @@ describe(`parser/generator on files in ${filesFolder}`, () => {
         expect(secondParseResult).toStrictEqual(JSON.parse(jsonFileContent));
       });
     }
+  });
+
+  afterAll(async () => {
+    const fieldsByInstruction = nwctxt.parser.fieldsByInstruction;
+    let content = "";
+    for (const [instruction, fields] of fieldsByInstruction.entries()) {
+      content += `export interface NWCTXT${instruction} {\n`;
+      content += `    name: ${JSON.stringify(instruction)};\n`;
+      content += `    fields: {\n`;
+      for (const [fieldName, s] of fields.entries()) {
+        content += `        /**\n`;
+        for (const example of s.values()) {
+          if (example.length < 100) {
+            content += `         * @example ${example}\n`;
+          }
+        }
+        content += `         */\n`;
+        content += `        ${JSON.stringify(fieldName)}?: any;\n`;
+      }
+      content += `    }\n`;
+      content += `}\n\n`;
+    }
+    await fs.promises.writeFile("out-types.ts", content);
   });
 });

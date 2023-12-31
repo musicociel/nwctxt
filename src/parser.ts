@@ -121,7 +121,7 @@ export const processFieldMap: Record<string, ProcessField> = {
   "StaffProperties|WithNextStaff": processOpts
 };
 
-export const processField = createProcessField(processFieldMap, defaultProcessField);
+export const processField = createProcessField(processFieldMap, defaultProcessField, true);
 
 export function aggregateFields(instruction: LowLevelNWCTXTInstruction): NWCTXTBaseMusicItem {
   const fieldsArray = instruction.fields;
@@ -226,3 +226,5 @@ export function parse(fileContent: string): NWCTXTFile {
   const parsedFile = lowlevelParser.parse(fileContent);
   return aggregateInstructions(parsedFile);
 }
+
+export { fieldsByInstruction } from "./createProcessors";

@@ -22,6 +22,8 @@
  * SOFTWARE.
  */
 
+export const fieldsByInstruction = new Map<string, Map<string, Set<any>>>();
+
 const lyricN = /^Lyric\d+$/;
 
 export const getInstructionKey = (instruction: { name: string }) => {
@@ -45,10 +47,26 @@ export const createProcessInstruction =
 export const createProcessField =
   <I extends { name: string }, F extends { name: string }, T extends any[], R>(
     fieldsMap: Record<string, (instruction: I, field: F, ...args: T) => R>,
-    defaultProcessField: (instruction: I, field: F, ...args: T) => R
+    defaultProcessField: (instruction: I, field: F, ...args: T) => R,
+    record = false
   ) =>
   (instruction: I, field: F, ...args: T): R => {
     const fieldName = field.name;
     const fn = fieldsMap[`${getInstructionKey(instruction)}|${fieldName}`] || fieldsMap[fieldName] || defaultProcessField;
-    return fn(instruction, field, ...args);
+    const res = fn(instruction, field, ...args);
+    if (record) {
+      const instrKey = getInstructionKey(instruction);
+      let m = fieldsByInstruction.get(instrKey);
+      if (!m) {
+        m = new Map();
+        fieldsByInstruction.set(instrKey, m);
+      }
+      let s = m.get(fieldName);
+      if (!s) {
+        s = new Set();
+        m.set(fieldName, s);
+      }
+      s.add(JSON.stringify(res));
+    }
+    return res;
   };
