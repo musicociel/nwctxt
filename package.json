@@ -43,7 +43,7 @@
     "build": "npm run clean && npm run build:ts && npm run build:schema && npm run build:test",
     "build:ts": "tsc",
     "build:test": "tsc --project test/tsconfig.json --noEmit",
-    "build:schema": "typescript-json-schema -o dist/schema.json tsconfig.json NWCTXTFile",
+    "build:schema": "typescript-json-schema --noExtraProps -o dist/schema.json tsconfig.json NWCTXTFile",
     "lint": "eslint .",
     "test": "vitest run",
     "tdd": "vitest",

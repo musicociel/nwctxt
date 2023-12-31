@@ -1,5 +1,7 @@
 import type { LowLevelNWCTXTFile } from "./lowlevel";
 
+type AnyFields = { [name: string]: any };
+
 export interface NWCTXTPosition {
   accidental: string | null;
   position: number;
@@ -17,158 +19,102 @@ export interface NWCTXTLyrics {
 
 export interface NWCTXTBaseMusicItem {
   name: string;
-  fields: Record<string, any>;
+  fields: AnyFields;
 }
 
 export interface NWCTXTNote {
   name: "Note";
-  fields: {
-    Pos?: NWCTXTPosition;
-    Dur?: NWCTXTDuration;
-  };
+  fields: AnyFields;
 }
 
 export interface NWCTXTRest {
   name: "Rest";
-  fields: {
-    Dur?: NWCTXTDuration;
-  };
+  fields: AnyFields;
 }
 
 export interface NWCTXTBar {
   name: "Bar";
-  fields: Record<string, any>;
+  fields: AnyFields;
 }
 
 export interface NWCTXTChord {
   name: "Chord";
-  fields: {
-    Pos?: NWCTXTPosition[];
-    Dur?: NWCTXTDuration;
-    Pos2?: NWCTXTPosition[];
-    Dur2?: string;
-  };
+  fields: AnyFields;
 }
 
 export interface NWCTXTKey {
   name: "Key";
-  fields: {
-    /**
-     * @example "F#"
-     */
-    Signature?: string[];
-    /**
-     * @example "G"
-     */
-    Tonic?: string;
-  };
+  fields: AnyFields;
 }
 
 export interface NWCTXTClef {
   name: "Clef";
-  fields: {
-    /**
-     * @example "Treble"
-     * @example "Bass"
-     */
-    Type?: string;
-    /**
-     * @example "Octave Down"
-     */
-    OctaveShift?: string;
-  };
+  fields: AnyFields;
 }
 
 export interface NWCTXTTimeSig {
   name: "TimeSig";
-  fields: {
-    Signature?: string;
-  };
+  fields: AnyFields;
 }
 
 export interface NWCTXTTempo {
   name: "Tempo";
-  fields: {
-    /**
-     * @example "Half"
-     */
-    Base?: string;
-    /**
-     * @example 52
-     */
-    Tempo?: number;
-    Pos?: number;
-    /**
-     * @example "AsStaffSignature"
-     */
-    Placement?: string;
-  };
+  fields: AnyFields;
 }
 
 export interface NWCTXTSustainPedal {
   name: "SustainPedal";
-  fields: {
-    /**
-     * @example -16
-     */
-    Pos?: number;
-    /**
-     * @example true
-     */
-    Wide?: boolean;
-  };
+  fields: AnyFields;
 }
 
 export interface NWCTXTUser {
   name: "User";
-  fields: {
-    ""?: string;
-  };
+  fields: AnyFields;
 }
 
 export interface NWCTXTMPC {
   name: "MPC";
-  fields: Record<string, any>;
+  fields: AnyFields;
 }
 
 export interface NWCTXTText {
   name: "Text";
-  fields: Record<string, any>;
+  fields: AnyFields;
 }
 
 export interface NWCTXTEnding {
   name: "Ending";
-  fields: Record<string, any>;
+  fields: AnyFields;
 }
 
 export interface NWCTXTFlow {
   name: "Flow";
-  fields: Record<string, any>;
+  fields: AnyFields;
 }
 
 export interface NWCTXTTempoVariance {
   name: "TempoVariance";
-  fields: Record<string, any>;
+  fields: AnyFields;
 }
 
 export interface NWCTXTInstrument {
   name: "Instrument";
-  fields: Record<string, any>;
+  fields: AnyFields;
 }
 
 export interface NWCTXTRestChord {
   name: "RestChord";
-  fields: Record<string, any>;
+  fields: AnyFields;
 }
 
 export interface NWCTXTPerformanceStyle {
   name: "PerformanceStyle";
-  fields: Record<string, any>;
+  fields: AnyFields;
 }
 
 export interface NWCTXTDynamic {
   name: "Dynamic";
-  fields: Record<string, any>;
+  fields: AnyFields;
 }
 
 export type NWCTXTMusicItem =
@@ -184,9 +130,9 @@ export type NWCTXTMusicItem =
   | NWCTXTNote
   | NWCTXTPerformanceStyle
   | NWCTXTRest
+  | NWCTXTRestChord
   | NWCTXTSustainPedal
   | NWCTXTTempo
-  | NWCTXTRestChord
   | NWCTXTTempoVariance
   | NWCTXTText
   | NWCTXTTimeSig
@@ -204,6 +150,7 @@ export interface NWCTXTStaff {
        * @example "Standard"
        */
       Name?: string;
+      Label?: string;
     };
 
     Lyrics?: {
@@ -233,6 +180,11 @@ export interface NWCTXTStaff {
        * @example 0
        */
       Trans?: number;
+
+      /**
+       * @example 48
+       */
+      Patch?: number;
     };
 
     StaffProperties?: {
@@ -290,6 +242,11 @@ export interface NWCTXTStaff {
        * @example number
        */
       Volume?: number;
+
+      /**
+       * @example "Brace,ConnectBars"
+       */
+      WithNextStaff?: string;
     };
   };
   music: NWCTXTMusicItem[];
