@@ -10,11 +10,20 @@ export interface NWCTXTPosition {
 }
 
 export interface NWCTXTDuration {
-  Dur: string;
+  Base: "Whole" | "Half" | "4th" | "8th" | "16th" | "32nd" | "64th";
+
+  Dotted?: boolean;
+  DblDotted?: boolean;
+  Slur?: boolean;
+  Accent?: boolean;
+  Triplet?: boolean | "First" | "End";
+  Staccato?: boolean;
+  Grace?: boolean;
+  Tenuto?: boolean;
 }
 
 export interface NWCTXTLyrics {
-  Text?: string;
+  Text: string;
 }
 
 export interface NWCTXTBaseMusicItem {
@@ -22,49 +31,184 @@ export interface NWCTXTBaseMusicItem {
   fields: AnyFields;
 }
 
+export interface NWCTXTOpts {
+  Stem?: "Up" | "Down";
+  Beam?: "First" | "End" | boolean;
+  ArticulationsOnStem?: boolean;
+}
+
 export interface NWCTXTNote {
   name: "Note";
-  fields: AnyFields;
+  fields: {
+    Dur: NWCTXTDuration;
+    Pos: NWCTXTPosition;
+    Opts?: NWCTXTOpts;
+  };
 }
 
 export interface NWCTXTRest {
   name: "Rest";
-  fields: AnyFields;
+  fields: {
+    Dur?: NWCTXTDuration;
+    Opts?: NWCTXTOpts;
+  };
 }
 
 export interface NWCTXTBar {
   name: "Bar";
-  fields: AnyFields;
+  fields: {
+    /**
+     * @example "LocalRepeatClose"
+     * @example "Double"
+     * @example "LocalRepeatOpen"
+     * @example "MasterRepeatClose"
+     * @example "MasterRepeatOpen"
+     * @example "SectionClose"
+     * @example "SectionOpen"
+     */
+    Style?: string;
+    /**
+     * @example 3
+     */
+    Repeat?: number;
+  };
 }
 
 export interface NWCTXTChord {
   name: "Chord";
-  fields: AnyFields;
+  fields: {
+    Dur: NWCTXTDuration;
+    Pos: NWCTXTPosition[];
+    Opts?: NWCTXTOpts;
+    Dur2?: NWCTXTDuration;
+    Pos2?: NWCTXTPosition[];
+  };
 }
 
 export interface NWCTXTKey {
   name: "Key";
-  fields: AnyFields;
+  fields: {
+    /**
+     * @example ["C"]
+     * @example ["F#"]
+     * @example ["F#","C#","G#","D#","A#","E#","B#"]
+     * @example ["Bb","Eb","Ab","Db","Gb","Cb","Fb"]
+     */
+    Signature?: string[];
+    /**
+     * @example "C"
+     * @example "G"
+     */
+    Tonic?: string;
+  };
 }
 
 export interface NWCTXTClef {
   name: "Clef";
-  fields: AnyFields;
+  fields: {
+    /**
+     * @example "Treble"
+     * @example "Bass"
+     * @example "Percussion"
+     */
+    Type?: string;
+    /**
+     * @example "Octave Down"
+     * @example "Octave Up"
+     */
+    OctaveShift?: string;
+  };
 }
 
 export interface NWCTXTTimeSig {
   name: "TimeSig";
-  fields: AnyFields;
+  fields: {
+    /**
+     * @example "AllaBreve"
+     * @example "Common"
+     * @example "2/4"
+     * @example "3/4"
+     * @example "4/2"
+     * @example "2/2"
+     * @example "4/4"
+     * @example "3/2"
+     * @example "9/8"
+     * @example "12/8"
+     * @example "6/8"
+     * @example "4/8"
+     * @example "6/4"
+     * @example "3/8"
+     * @example "9/4"
+     * @example "1/2"
+     * @example "5/4"
+     */
+    Signature?: string;
+  };
 }
 
 export interface NWCTXTTempo {
   name: "Tempo";
-  fields: AnyFields;
+  fields: {
+    /**
+     * @example "Half"
+     * @example "Quarter Dotted"
+     * @example "Half Dotted"
+     * @example "Eighth"
+     */
+    Base?: string;
+    /**
+     * @example 90
+     */
+    Tempo?: number;
+    /**
+     * @example "Allegro"
+     * @example "Andantino"
+     * @example "Andante"
+     * @example "Moderato"
+     * @example "Allegretto"
+     * @example "Adagio"
+     * @example "Largo"
+     */
+    Text?: string;
+    /**
+     * @example 6
+     * @example 8
+     * @example 10
+     * @example 14
+     */
+    Pos?: number;
+    /**
+     * @example "AsStaffSignature"
+     */
+    Placement?: string;
+    /**
+     * @example true
+     */
+    Wide?: boolean;
+  };
 }
 
 export interface NWCTXTSustainPedal {
   name: "SustainPedal";
-  fields: AnyFields;
+  fields: {
+    /**
+     * @example -16
+     * @example 6
+     */
+    Pos?: number;
+    /**
+     * @example true
+     */
+    Wide?: boolean;
+    /**
+     * @example "Released"
+     */
+    Status?: string;
+    /**
+     * @example "AsStaffSignature"
+     */
+    Placement?: string;
+  };
 }
 
 export interface NWCTXTUser {
@@ -74,47 +218,253 @@ export interface NWCTXTUser {
 
 export interface NWCTXTMPC {
   name: "MPC";
-  fields: AnyFields;
+  fields: {
+    /**
+     * @example "vol"
+     * @example "tempo"
+     * @example "pitch"
+     */
+    Controller?: string;
+    /**
+     * @example "Absolute"
+     * @example "Linear Sweep"
+     */
+    Style?: string;
+    /**
+     * @example "Quarter"
+     * @example "Whole"
+     */
+    TimeRes?: string;
+    /**
+     * @example 1
+     * @example 32
+     */
+    SweepRes?: number;
+    /**
+     * @example [0,80]
+     * @example [0,127]
+     * @example [0,162]
+     * @example [0,100]
+     * @example [0,0]
+     * @example [0,8192]
+     */
+    Pt1?: number[];
+    /**
+     * @example 8
+     */
+    Pos?: number;
+    /**
+     * @example true
+     */
+    Wide?: boolean;
+    /**
+     * @example "AsStaffSignature"
+     */
+    Placement?: string;
+    /**
+     * @example [16,240]
+     * @example [4,16383]
+     */
+    Pt2?: number[];
+  };
 }
 
 export interface NWCTXTText {
   name: "Text";
-  fields: AnyFields;
+  fields: {
+    /**
+     * @example "Andante"
+     */
+    Text?: string;
+    /**
+     * @example "StaffItalic"
+     * @example "StaffBold"
+     * @example "PageText"
+     */
+    Font?: string;
+    /**
+     * @example -243
+     * @example -7
+     */
+    Pos?: number;
+    /**
+     * @example "AsStaffSignature"
+     */
+    Placement?: string;
+    /**
+     * @example true
+     */
+    Wide?: boolean;
+  };
 }
 
 export interface NWCTXTEnding {
   name: "Ending";
-  fields: AnyFields;
+  fields: {
+    Endings?: string[];
+  };
 }
 
 export interface NWCTXTFlow {
   name: "Flow";
-  fields: AnyFields;
+  fields: {
+    /**
+     * @example "Fine"
+     * @example "DCalFine"
+     * @example "Segno"
+     * @example "ToCoda"
+     * @example "DCalCoda"
+     * @example "Coda"
+     * @example "DSalCoda"
+     * @example "DSalFine"
+     * @example "DaCapo"
+     * @example "DalSegno"
+     */
+    Style?: string;
+    /**
+     * @example -8
+     * @example 7
+     * @example 8
+     * @example 10
+     */
+    Pos?: number;
+    /**
+     * @example true
+     */
+    Wide?: boolean;
+    /**
+     * @example "AsStaffSignature"
+     */
+    Placement?: string;
+  };
 }
 
 export interface NWCTXTTempoVariance {
   name: "TempoVariance";
-  fields: AnyFields;
+  fields: {
+    /**
+     * @example "Fermata"
+     * @example "Breath Mark"
+     */
+    Style?: string;
+    /**
+     * @example 0
+     * @example 2
+     * @example 15
+     * @example 16
+     */
+    Pause?: number;
+    /**
+     * @example -243
+     * @example -250
+     */
+    Pos?: number;
+    /**
+     * @example "Center"
+     */
+    Justify?: string;
+    /**
+     * @example "AtNextNote"
+     * @example "AsStaffSignature"
+     */
+    Placement?: string;
+    /**
+     * @example true
+     */
+    Wide?: boolean;
+  };
 }
 
 export interface NWCTXTInstrument {
   name: "Instrument";
-  fields: AnyFields;
+  fields: {
+    /**
+     * @example "[#001]"
+     * @example "[#017]"
+     */
+    Name?: string;
+    /**
+     * @example 0
+     * @example 16
+     */
+    Patch?: number;
+    /**
+     * @example 0
+     */
+    Trans?: number;
+    /**
+     * @example [10,30,45,60,75,92,108,127]
+     */
+    DynVel?: number[];
+    /**
+     * @example 8
+     */
+    Pos?: number;
+    /**
+     * @example true
+     */
+    Wide?: boolean;
+    /**
+     * @example "AsStaffSignature"
+     */
+    Placement?: string;
+  };
 }
 
 export interface NWCTXTRestChord {
   name: "RestChord";
-  fields: AnyFields;
+  fields: {
+    Dur: NWCTXTDuration;
+    Opts?: NWCTXTOpts;
+    Dur2: NWCTXTDuration;
+    Pos2: NWCTXTPosition[];
+  };
 }
 
 export interface NWCTXTPerformanceStyle {
   name: "PerformanceStyle";
-  fields: AnyFields;
+  fields: {
+    /**
+     * @example "Maestoso"
+     * @example "Legato"
+     */
+    Style?: string;
+    /**
+     * @example -243
+     * @example -250
+     */
+    Pos?: number;
+    /**
+     * @example "AsStaffSignature"
+     */
+    Placement?: string;
+  };
 }
 
 export interface NWCTXTDynamic {
   name: "Dynamic";
-  fields: AnyFields;
+  fields: {
+    /**
+     * @example "f"
+     * @example "mf"
+     */
+    Style?: string;
+    /**
+     * @example -254
+     * @example -249
+     * @example -1
+     * @example 0
+     */
+    Pos?: number;
+    /**
+     * @example "AsStaffSignature"
+     */
+    Placement?: string;
+    /**
+     * @example true
+     */
+    Wide?: boolean;
+  };
 }
 
 export type NWCTXTMusicItem =
@@ -142,19 +492,25 @@ export interface NWCTXTStaff {
   properties: {
     AddStaff?: {
       /**
-       * @example "Standard"
+       * @default "Standard"
        */
       Group?: string;
 
       /**
-       * @example "Standard"
+       * @default "Staff"
+       * @example "Piano"
        */
       Name?: string;
+      /**
+       * @example "Soprano"
+       * @example "Piano"
+       */
       Label?: string;
     };
 
     Lyrics?: {
       /**
+       * @example "Start of Accidental/Note"
        * @example "Standard Rules"
        */
       Align?: string;
@@ -166,87 +522,89 @@ export interface NWCTXTStaff {
 
       /**
        * @example "Bottom"
+       * @example "Top"
        */
       Placement?: string;
     };
 
     StaffInstrument?: {
       /**
-       * @example [10,30,45,60,75,92,108,127]
+       * @default [10,30,45,60,75,92,108,127]
        */
       DynVel?: number[];
 
       /**
-       * @example 0
+       * @default 0
        */
       Trans?: number;
 
       /**
-       * @example 48
+       * @example 0
        */
       Patch?: number;
     };
 
     StaffProperties?: {
       /**
-       * @example 16
+       * @default 12
        */
       BoundaryBottom?: number;
 
       /**
-       * @example 12
+       * @default 12
        */
       BoundaryTop?: number;
 
       /**
-       * @example 1
+       * @default 1
        */
       Channel?: number;
 
       /**
-       * @example "Default"
+       * @default "Default"
        */
       Color?: string;
 
       /**
-       * @example 0
+       * @default 0
        */
       Device?: number;
 
       /**
-       * @example "Section Close"
+       * @default "Section Close"
        */
       EndingBar?: string;
 
       /**
-       * @example 5
+       * @default 5
        */
       Lines?: number;
 
       /**
-       * @example false
+       * @default false
        */
       Muted?: boolean;
 
       /**
-       * @example 64
+       * @default 64
        */
       StereoPan?: number;
 
       /**
-       * @example true
+       * @default true
        */
       Visible?: boolean;
 
       /**
-       * @example number
+       * @default number
        */
       Volume?: number;
 
-      /**
-       * @example "Brace,ConnectBars"
-       */
-      WithNextStaff?: string;
+      WithNextStaff?: {
+        Brace?: boolean;
+        Bracket?: boolean;
+        ConnectBars?: boolean;
+      };
     };
   };
   music: NWCTXTMusicItem[];
@@ -254,9 +612,6 @@ export interface NWCTXTStaff {
 }
 
 export interface NWCTXTFontConfig {
-  /**
-   * @example true
-   */
   Bold: boolean;
 
   /**
@@ -264,9 +619,6 @@ export interface NWCTXTFontConfig {
    */
   CharSet: number;
 
-  /**
-   * @example true
-   */
   Italic: boolean;
 
   /**
@@ -276,6 +628,7 @@ export interface NWCTXTFontConfig {
 
   /**
    * @example "Times New Roman"
+   * @example "Verdana"
    */
   Typeface: string;
 }
@@ -300,29 +653,86 @@ export interface NWCTXTFile extends Pick<LowLevelNWCTXTFile, "version" | "clip" 
   >;
   properties: {
     Editor?: {
+      /**
+       * @default 1
+       */
       ActiveStaff?: number;
+      /**
+       * @default 1
+       */
       CaretIndex?: number;
+      /**
+       * @default 0
+       */
       CaretPos?: number;
     };
     PgMargins?: {
+      /**
+       * @default 1.27
+       */
       Bottom?: number;
+      /**
+       * @default 1.27
+       */
       Left?: number;
+      /**
+       * @default false
+       */
       Mirror?: boolean;
+      /**
+       * @default 1.27
+       */
       Right?: number;
+      /**
+       * @default 1.27
+       */
       Top?: number;
     };
     PgSetup?: {
       AllowLayering?: boolean;
+      /**
+       * @default "None"
+       */
       BarNumbers?: string;
+      /**
+       * @default false
+       */
       DurationPadding?: boolean;
+      /**
+       * @default false
+       */
       ExtendLastSystem?: boolean;
+      /**
+       * @default true
+       */
       JustifyVertically?: boolean;
+      /**
+       * @default 0
+       */
       PageNumbers?: number;
+      /**
+       * @default false
+       */
       PrintSystemSepMark?: boolean;
+      /**
+       * @default "None"
+       */
       StaffLabels?: string;
+      /**
+       * @default 16
+       */
       StaffSize?: number;
+      /**
+       * @default 1
+       */
       StartingBar?: number;
+      /**
+       * @default true
+       */
       TitlePage?: boolean;
+      /**
+       * @default 4
+       */
       Zoom?: number;
     };
     SongInfo?: {

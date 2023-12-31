@@ -71,8 +71,8 @@ const processOpts = (instruction: any, field: FutureLowLevelNWCTXTField) => {
 
 const processDur = (instruction: any, field: FutureLowLevelNWCTXTField) => {
   const value = field.value;
-  const fields = optsValue(field.value, (field) => field === "Dur");
-  fields.unshift(value.Dur);
+  const fields = optsValue(field.value, (field) => field === "Base");
+  fields.unshift(value.Base);
   field.value = fields.join(",");
 };
 
@@ -96,11 +96,16 @@ export const processFieldMap = {
   "Note|Pos": processSinglePosField,
   "Chord|Pos": processMultiPosField,
   "Chord|Pos2": processMultiPosField,
+  "RestChord|Pos2": processMultiPosField,
   Dur: processDur,
   Dur2: processDur,
   Opts: processOpts,
+  "StaffProperties|WithNextStaff": processOpts,
   DynVel: joinArray,
-  "Key|Signature": joinArray
+  "Key|Signature": joinArray,
+  "Ending|Endings": joinArray,
+  "MPC|Pt1": joinArray,
+  "MPC|Pt2": joinArray
 };
 
 export const processField = createProcessField(processFieldMap, defaultProcessField);

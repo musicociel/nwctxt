@@ -25,7 +25,16 @@
 import * as lowlevelParser from "./lowlevel/parser";
 import { createProcessField, createProcessInstruction } from "./createProcessors";
 import type { LowLevelNWCTXTField, LowLevelNWCTXTFile, LowLevelNWCTXTInstruction } from "./lowlevel/types";
-import type { NWCTXTFile, NWCTXTBaseMusicItem, NWCTXTStaff, NWCTXTPosition, NWCTXTMusicItem, NWCTXTDuration, NWCTXTFontConfig } from "./types";
+import type {
+  NWCTXTFile,
+  NWCTXTBaseMusicItem,
+  NWCTXTStaff,
+  NWCTXTPosition,
+  NWCTXTMusicItem,
+  NWCTXTDuration,
+  NWCTXTFontConfig,
+  NWCTXTLyrics
+} from "./types";
 
 const onlyBlank = /^\s*$/;
 
@@ -90,7 +99,7 @@ const processOpts: ProcessField = (instruction, field) => optsArray(field.value.
 const processDur: ProcessField = (instruction, field): NWCTXTDuration => {
   const parts = field.value.split(",");
   const res: NWCTXTDuration = {
-    Dur: parts.shift()!
+    Base: parts.shift() as NWCTXTDuration["Base"]
   };
   return optsArray(parts, res);
 };
@@ -99,11 +108,16 @@ export const processFieldMap: Record<string, ProcessField> = {
   "Note|Pos": processSinglePosField,
   "Chord|Pos": processMultiPosField,
   "Chord|Pos2": processMultiPosField,
+  "RestChord|Pos2": processMultiPosField,
   Dur: processDur,
   Dur2: processDur,
   "Key|Signature": splitArray,
+  "Ending|Endings": splitArray,
   DynVel: splitNumberArray,
-  Opts: processOpts
+  "MPC|Pt1": splitNumberArray,
+  "MPC|Pt2": splitNumberArray,
+  Opts: processOpts,
+  "StaffProperties|WithNextStaff": processOpts
 };
 
 export const processField = createProcessField(processFieldMap, defaultProcessField);
@@ -184,7 +198,7 @@ export const processInstructionMap: Record<string, ProcessInstruction> = {
     const lyrics = getCurrentStaff(song).lyrics;
     const verseNumber = Number(instruction.name.slice(5)) - 1;
     if (!lyrics[verseNumber]) {
-      lyrics[verseNumber] = {};
+      lyrics[verseNumber] = {} as NWCTXTLyrics;
     }
     Object.assign(lyrics[verseNumber], instruction.fields);
   }

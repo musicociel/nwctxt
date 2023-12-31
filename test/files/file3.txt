@@ -149,7 +149,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "Whole",
+              "Base": "Whole",
             },
             "Pos": {
               "accidental": null,
@@ -167,7 +167,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "Half",
+              "Base": "Half",
             },
             "Pos": {
               "accidental": null,
@@ -181,7 +181,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -195,7 +195,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -213,7 +213,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -227,7 +227,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "16th",
+              "Base": "16th",
             },
             "Pos": {
               "accidental": null,
@@ -241,7 +241,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "32nd",
+              "Base": "32nd",
             },
             "Pos": {
               "accidental": null,
@@ -255,7 +255,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "64th",
+              "Base": "64th",
             },
             "Pos": {
               "accidental": null,
@@ -269,7 +269,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "64th",
+              "Base": "64th",
             },
             "Pos": {
               "accidental": null,
@@ -283,7 +283,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": "n",
@@ -297,7 +297,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -311,7 +311,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -329,7 +329,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -343,7 +343,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -357,7 +357,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -371,7 +371,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -397,7 +397,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -411,8 +411,8 @@
         {
           "fields": {
             "Dur": {
+              "Base": "8th",
               "Dotted": true,
-              "Dur": "8th",
             },
             "Pos": {
               "accidental": "b",
@@ -426,8 +426,8 @@
         {
           "fields": {
             "Dur": {
+              "Base": "8th",
               "DblDotted": true,
-              "Dur": "8th",
             },
             "Pos": {
               "accidental": "v",
@@ -441,8 +441,8 @@
         {
           "fields": {
             "Dur": {
+              "Base": "8th",
               "DblDotted": true,
-              "Dur": "8th",
             },
             "Pos": {
               "accidental": "x",
@@ -456,8 +456,8 @@
         {
           "fields": {
             "Dur": {
+              "Base": "8th",
               "Dotted": true,
-              "Dur": "8th",
             },
             "Pos": {
               "accidental": "#",
@@ -471,7 +471,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "16th",
+              "Base": "16th",
             },
             "Pos": {
               "accidental": null,
@@ -489,7 +489,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -503,7 +503,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -517,8 +517,8 @@
         {
           "fields": {
             "Dur": {
+              "Base": "4th",
               "Dotted": true,
-              "Dur": "4th",
             },
           },
           "name": "Rest",
@@ -526,7 +526,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -553,7 +553,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -567,7 +567,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
               "Grace": true,
             },
             "Pos": {
@@ -582,7 +582,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -596,7 +596,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -610,7 +610,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -628,7 +628,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -642,7 +642,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -656,7 +656,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -670,7 +670,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -684,7 +684,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": "n",
@@ -698,7 +698,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -712,7 +712,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -726,7 +726,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -744,7 +744,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -769,7 +769,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -783,7 +783,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -797,7 +797,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": "n",
@@ -811,7 +811,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -825,7 +825,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -839,7 +839,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -853,7 +853,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -867,7 +867,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -885,7 +885,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -899,7 +899,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -913,7 +913,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
               "Slur": true,
             },
             "Pos": {
@@ -928,7 +928,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
               "Slur": true,
             },
             "Pos": {
@@ -943,7 +943,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
               "Slur": true,
             },
             "Pos": {
@@ -958,7 +958,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
               "Slur": true,
             },
             "Pos": {
@@ -973,7 +973,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
               "Slur": true,
             },
             "Pos": {
@@ -988,7 +988,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -1013,7 +1013,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -1027,7 +1027,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -1041,7 +1041,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "Half",
+              "Base": "Half",
             },
             "Pos": {
               "accidental": null,

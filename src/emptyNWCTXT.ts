@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-export const emptyNWCTXT = `!NoteWorthyComposer(2.75)
+export const emptyNWCTXT = `!NoteWorthyComposer(2.751)
 |Editor|ActiveStaff:1|CaretIndex:1|CaretPos:0
 |SongInfo|Title:""|Author:""|Lyricist:""|Copyright1:""|Copyright2:""
 |PgSetup|StaffSize:16|Zoom:4|TitlePage:Y|JustifyVertically:Y|PrintSystemSepMark:N|ExtendLastSystem:N|DurationPadding:Y|PageNumbers:0|StaffLabels:None|BarNumbers:None|StartingBar:1

@@ -134,7 +134,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -148,7 +148,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -162,7 +162,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -176,7 +176,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -194,7 +194,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -208,7 +208,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -222,7 +222,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -236,7 +236,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -265,7 +265,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -279,7 +279,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -293,7 +293,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -307,7 +307,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -325,7 +325,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -339,7 +339,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -353,7 +353,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -367,7 +367,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -396,7 +396,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -410,7 +410,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -424,7 +424,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -438,7 +438,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -456,7 +456,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -470,7 +470,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -484,7 +484,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -498,7 +498,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -516,7 +516,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -530,7 +530,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -544,7 +544,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
               "Slur": true,
               "Triplet": "First",
             },
@@ -563,7 +563,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
               "Triplet": true,
             },
             "Opts": {
@@ -581,7 +581,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
               "Triplet": "End",
             },
             "Opts": {

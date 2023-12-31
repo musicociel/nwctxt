@@ -134,7 +134,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -148,7 +148,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -162,7 +162,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "8th",
+              "Base": "8th",
             },
             "Pos": {
               "accidental": null,
@@ -176,7 +176,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,
@@ -190,7 +190,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Pos": {
               "accidental": null,

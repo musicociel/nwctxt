@@ -154,7 +154,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Opts": {
               "Stem": "Down",
@@ -165,7 +165,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Opts": {
               "Stem": "Down",
@@ -182,7 +182,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Opts": {
               "Stem": "Down",
@@ -199,7 +199,7 @@
         {
           "fields": {
             "Dur": {
-              "Dur": "4th",
+              "Base": "4th",
             },
             "Opts": {
               "Stem": "Down",
