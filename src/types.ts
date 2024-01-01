@@ -2,9 +2,9 @@ import type { LowLevelNWCTXTFile } from "./lowlevel";
 
 type AnyFields = { [name: string]: any };
 
-export type NWCTXTMusicNote = "C" | "D" | "E" | "F" | "G" | "A" | "B" | "C";
+export type NWCTXTNoteName = "C" | "D" | "E" | "F" | "G" | "A" | "B" | "C";
 export type NWCTXTAccidental = "#" | "b" | "n" | "v" | "x" | "";
-export type NWCTXTMusicNoteWithAccidental = `${NWCTXTMusicNote}${NWCTXTAccidental}`;
+export type NWCTXTNoteNameWithAccidental = `${NWCTXTNoteName}${NWCTXTAccidental}`;
 
 export interface NWCTXTPosition {
   accidental: NWCTXTAccidental;
@@ -93,8 +93,8 @@ export interface NWCTXTChord {
 export interface NWCTXTKey {
   name: "Key";
   fields: {
-    Signature: NWCTXTMusicNoteWithAccidental[];
-    Tonic: NWCTXTMusicNote;
+    Signature: NWCTXTNoteNameWithAccidental[];
+    Tonic: NWCTXTNoteName;
   };
 }
 
