@@ -137,7 +137,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "x",
               "position": 0,
               "tie": false,
@@ -151,7 +151,7 @@
               "Base": "8th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "x",
               "position": 0,
               "tie": false,
@@ -165,7 +165,7 @@
               "Base": "8th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "Y",
               "position": 0,
               "tie": false,
@@ -179,7 +179,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "a",
               "position": 0,
               "tie": false,
@@ -193,7 +193,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "b",
               "position": 0,
               "tie": false,

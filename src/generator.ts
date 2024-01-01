@@ -45,7 +45,7 @@ const processQuotedField = (instruction: any, field: FutureLowLevelNWCTXTField) 
 };
 
 const processPos = (value: NWCTXTPosition): string => {
-  return `${value.accidental || ""}${value.position}${value.head}${value.tie ? "^" : ""}`;
+  return `${value.accidental}${value.position}${value.head}${value.tie ? "^" : ""}`;
 };
 
 const processSinglePosField = (instruction: any, field: FutureLowLevelNWCTXTField) => {

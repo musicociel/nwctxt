@@ -33,7 +33,8 @@ import type {
   NWCTXTMusicItem,
   NWCTXTDuration,
   NWCTXTFontConfig,
-  NWCTXTLyrics
+  NWCTXTLyrics,
+  NWCTXTAccidental
 } from "./types";
 
 const onlyBlank = /^\s*$/;
@@ -62,7 +63,7 @@ const singlePos = (value: string): NWCTXTPosition => {
     throw new Error(`Unrecognized position: ${value}`);
   }
   return {
-    accidental: parsedPos[1] || null,
+    accidental: (parsedPos[1] || "") as NWCTXTAccidental,
     position: Number(parsedPos[2]),
     head: parsedPos[3] || "",
     tie: !!parsedPos[4]

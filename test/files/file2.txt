@@ -55,7 +55,7 @@
               "Base": "Half",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -3,
               "tie": false,
@@ -69,7 +69,7 @@
               "Base": "Half",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 1,
               "tie": false,

@@ -2,8 +2,12 @@ import type { LowLevelNWCTXTFile } from "./lowlevel";
 
 type AnyFields = { [name: string]: any };
 
+export type NWCTXTMusicNote = "C" | "D" | "E" | "F" | "G" | "A" | "B" | "C";
+export type NWCTXTAccidental = "#" | "b" | "n" | "v" | "x" | "";
+export type NWCTXTMusicNoteWithAccidental = `${NWCTXTMusicNote}${NWCTXTAccidental}`;
+
 export interface NWCTXTPosition {
-  accidental: string | null;
+  accidental: NWCTXTAccidental;
   position: number;
   head: string;
   tie: boolean;
@@ -50,7 +54,7 @@ export interface NWCTXTNote {
 export interface NWCTXTRest {
   name: "Rest";
   fields: {
-    Dur?: NWCTXTDuration;
+    Dur: NWCTXTDuration;
     Opts?: NWCTXTOpts;
   };
 }
@@ -89,35 +93,16 @@ export interface NWCTXTChord {
 export interface NWCTXTKey {
   name: "Key";
   fields: {
-    /**
-     * @example ["C"]
-     * @example ["F#"]
-     * @example ["F#","C#","G#","D#","A#","E#","B#"]
-     * @example ["Bb","Eb","Ab","Db","Gb","Cb","Fb"]
-     */
-    Signature?: string[];
-    /**
-     * @example "C"
-     * @example "G"
-     */
-    Tonic?: string;
+    Signature: NWCTXTMusicNoteWithAccidental[];
+    Tonic: NWCTXTMusicNote;
   };
 }
 
 export interface NWCTXTClef {
   name: "Clef";
   fields: {
-    /**
-     * @example "Treble"
-     * @example "Bass"
-     * @example "Percussion"
-     */
-    Type?: string;
-    /**
-     * @example "Octave Down"
-     * @example "Octave Up"
-     */
-    OctaveShift?: string;
+    Type: "Treble" | "Bass" | "Alto" | "Tenor" | "Percussion";
+    OctaveShift?: "Octave Down" | "Octave Up";
   };
 }
 
@@ -150,17 +135,11 @@ export interface NWCTXTTimeSig {
 export interface NWCTXTTempo {
   name: "Tempo";
   fields: {
-    /**
-     * @example "Half"
-     * @example "Quarter Dotted"
-     * @example "Half Dotted"
-     * @example "Eighth"
-     */
-    Base?: string;
+    Base?: "Eighth" | "Eighth Dotted" | "Quarter" | "Quarter Dotted" | "Half" | "Half Dotted";
     /**
      * @example 90
      */
-    Tempo?: number;
+    Tempo: number;
     /**
      * @example "Allegro"
      * @example "Andantino"

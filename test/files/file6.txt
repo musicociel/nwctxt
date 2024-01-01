@@ -137,7 +137,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -6,
               "tie": false,
@@ -151,7 +151,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -5,
               "tie": false,
@@ -165,7 +165,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -4,
               "tie": false,
@@ -179,7 +179,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -3,
               "tie": false,
@@ -197,7 +197,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -2,
               "tie": false,
@@ -211,7 +211,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -1,
               "tie": false,
@@ -225,7 +225,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 0,
               "tie": false,
@@ -239,7 +239,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 1,
               "tie": false,
@@ -268,7 +268,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -2,
               "tie": false,
@@ -282,7 +282,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -1,
               "tie": false,
@@ -296,7 +296,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 0,
               "tie": false,
@@ -310,7 +310,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 1,
               "tie": false,
@@ -328,7 +328,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 2,
               "tie": false,
@@ -342,7 +342,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 3,
               "tie": false,
@@ -356,7 +356,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 4,
               "tie": false,
@@ -370,7 +370,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 5,
               "tie": false,
@@ -399,7 +399,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -6,
               "tie": false,
@@ -413,7 +413,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -5,
               "tie": false,
@@ -427,7 +427,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -4,
               "tie": false,
@@ -441,7 +441,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -3,
               "tie": false,
@@ -459,7 +459,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -2,
               "tie": false,
@@ -473,7 +473,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": -1,
               "tie": false,
@@ -487,7 +487,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 0,
               "tie": false,
@@ -501,7 +501,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 1,
               "tie": false,
@@ -519,7 +519,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 2,
               "tie": false,
@@ -533,7 +533,7 @@
               "Base": "4th",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 1,
               "tie": false,
@@ -552,7 +552,7 @@
               "Stem": "Down",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 1,
               "tie": false,
@@ -570,7 +570,7 @@
               "Stem": "Down",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 2,
               "tie": false,
@@ -588,7 +588,7 @@
               "Stem": "Down",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 3,
               "tie": false,

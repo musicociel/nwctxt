@@ -155,13 +155,13 @@
             },
             "Pos": [
               {
-                "accidental": null,
+                "accidental": "",
                 "head": "",
                 "position": 1,
                 "tie": false,
               },
               {
-                "accidental": null,
+                "accidental": "",
                 "head": "",
                 "position": 3,
                 "tie": false,
@@ -175,7 +175,7 @@
             ],
             "Pos2": [
               {
-                "accidental": null,
+                "accidental": "",
                 "head": "",
                 "position": -8,
                 "tie": false,
@@ -193,7 +193,7 @@
                 "tie": false,
               },
               {
-                "accidental": null,
+                "accidental": "",
                 "head": "",
                 "position": -2,
                 "tie": false,
@@ -211,7 +211,7 @@
               "Stem": "Up",
             },
             "Pos": {
-              "accidental": null,
+              "accidental": "",
               "head": "",
               "position": 4,
               "tie": false,
@@ -232,13 +232,13 @@
             },
             "Pos": [
               {
-                "accidental": null,
+                "accidental": "",
                 "head": "",
                 "position": 2,
                 "tie": false,
               },
               {
-                "accidental": null,
+                "accidental": "",
                 "head": "",
                 "position": 4,
                 "tie": false,
@@ -246,19 +246,19 @@
             ],
             "Pos2": [
               {
-                "accidental": null,
+                "accidental": "",
                 "head": "",
                 "position": -6,
                 "tie": false,
               },
               {
-                "accidental": null,
+                "accidental": "",
                 "head": "",
                 "position": -5,
                 "tie": false,
               },
               {
-                "accidental": null,
+                "accidental": "",
                 "head": "",
                 "position": -3,
                 "tie": false,
@@ -277,13 +277,13 @@
             },
             "Pos": [
               {
-                "accidental": null,
+                "accidental": "",
                 "head": "",
                 "position": 3,
                 "tie": false,
               },
               {
-                "accidental": null,
+                "accidental": "",
                 "head": "",
                 "position": 4,
                 "tie": false,
