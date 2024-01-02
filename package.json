@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "nwctxt",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Parser and generator for the nwctxt file format used by Note Worthy Composer.",
   "type": "module",
   "scripts": {
