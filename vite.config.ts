@@ -1,3 +1,4 @@
+import { readFile } from "fs/promises";
 import { defineConfig } from "vite";
 import pkg from "./package.json";
 
@@ -44,6 +45,18 @@ export default defineConfig({
           source: JSON.stringify(packageJson),
           type: "asset"
         });
+      }
+    },
+    {
+      name: "copy",
+      async buildStart() {
+        for (const fileName of ["README.md", "LICENSE"]) {
+          this.emitFile({
+            fileName,
+            source: await readFile(fileName),
+            type: "asset"
+          });
+        }
       }
     }
   ]
