@@ -109,26 +109,7 @@ export interface NWCTXTClef {
 export interface NWCTXTTimeSig {
   name: "TimeSig";
   fields: {
-    /**
-     * @example "AllaBreve"
-     * @example "Common"
-     * @example "2/4"
-     * @example "3/4"
-     * @example "4/2"
-     * @example "2/2"
-     * @example "4/4"
-     * @example "3/2"
-     * @example "9/8"
-     * @example "12/8"
-     * @example "6/8"
-     * @example "4/8"
-     * @example "6/4"
-     * @example "3/8"
-     * @example "9/4"
-     * @example "1/2"
-     * @example "5/4"
-     */
-    Signature?: string;
+    Signature: "Common" | "AllaBreve" | [number, number];
   };
 }
 

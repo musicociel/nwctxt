@@ -1,4 +1,4 @@
-import type { NWCTXTAccidental, NWCTXTClef, NWCTXTDuration, NWCTXTKey, NWCTXTNoteName, NWCTXTPosition, NWCTXTTempo } from "./types";
+import type { NWCTXTAccidental, NWCTXTClef, NWCTXTDuration, NWCTXTKey, NWCTXTNoteName, NWCTXTPosition, NWCTXTTempo, NWCTXTTimeSig } from "./types";
 
 // Durations:
 
@@ -38,6 +38,16 @@ export const tempoBases: Record<NonNullable<NWCTXTTempo["fields"]["Base"]>, numb
 
 export const defaultTempo: Pick<NWCTXTTempo["fields"], "Base" | "Tempo"> = { Tempo: 120 };
 export const computeTempoDuration = (tempo = defaultTempo) => tempo.Tempo * tempoBases[tempo["Base"] ?? "Quarter"];
+
+// Time signature:
+
+export const defaultTimeSignature: [number, number] = [4, 4];
+export const timeSignatures: Record<string & NWCTXTTimeSig["fields"]["Signature"], [number, number]> = {
+  AllaBreve: [2, 2],
+  Common: [4, 4]
+};
+export const resolveTimeSignature = (signature: NWCTXTTimeSig["fields"]["Signature"]) =>
+  typeof signature === "string" ? timeSignatures[signature] : signature;
 
 // Clefs:
 

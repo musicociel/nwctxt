@@ -71,14 +71,18 @@ const processOpts = (instruction: any, field: FutureLowLevelNWCTXTField) => {
 
 const processDur = (instruction: any, field: FutureLowLevelNWCTXTField) => {
   const value = field.value;
-  const fields = optsValue(field.value, (field) => field === "Base");
+  const fields = optsValue(value, (field) => field === "Base");
   fields.unshift(value.Base);
   field.value = fields.join(",");
 };
 
 const joinArray = (instruction: any, field: FutureLowLevelNWCTXTField) => {
+  field.value = field.value.join(",");
+};
+
+const joinTimeSignature = (instruction: any, field: FutureLowLevelNWCTXTField) => {
   const value = field.value;
-  field.value = value.join(",");
+  field.value = typeof value === "string" ? value : value.join("/");
 };
 
 export const processFieldMap = {
@@ -103,6 +107,7 @@ export const processFieldMap = {
   "StaffProperties|WithNextStaff": processOpts,
   DynVel: joinArray,
   "Key|Signature": joinArray,
+  "TimeSig|Signature": joinTimeSignature,
   "Ending|Endings": joinArray,
   "MPC|Pt1": joinArray,
   "MPC|Pt2": joinArray

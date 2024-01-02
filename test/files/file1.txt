@@ -147,7 +147,10 @@
         },
         {
           "fields": {
-            "Signature": "4/4",
+            "Signature": [
+              4,
+              4,
+            ],
           },
           "name": "TimeSig",
         },

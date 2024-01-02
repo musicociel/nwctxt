@@ -82,6 +82,12 @@ const splitNumberArray: ProcessField = (instruction, field) => {
   return field.value.split(",").map((value) => +value);
 };
 
+const splitTimeSignature: ProcessField = (instruction, field) => {
+  const value = field.value;
+  const splitValue = value.split("/");
+  return splitValue.length === 2 ? splitValue.map((value) => +value) : value;
+};
+
 const processMultiPosField: ProcessField = (instruction, field) => {
   return field.value.split(",").map(singlePos);
 };
@@ -113,6 +119,7 @@ export const processFieldMap: Record<string, ProcessField> = {
   Dur: processDur,
   Dur2: processDur,
   "Key|Signature": splitArray,
+  "TimeSig|Signature": splitTimeSignature,
   "Ending|Endings": splitArray,
   DynVel: splitNumberArray,
   "MPC|Pt1": splitNumberArray,
