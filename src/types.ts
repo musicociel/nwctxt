@@ -402,11 +402,7 @@ export interface NWCTXTPerformanceStyle {
 export interface NWCTXTDynamic {
   name: "Dynamic";
   fields: {
-    /**
-     * @example "f"
-     * @example "mf"
-     */
-    Style?: string;
+    Style: "ppp" | "pp" | "p" | "mp" | "mf" | "f" | "ff" | "fff";
     /**
      * @example 7
      * @example -1

@@ -1,0 +1,23 @@
+[
+  {
+    "channel": 0,
+    "controllerType": 7,
+    "deltaTime": 0,
+    "subtype": "controller",
+    "type": "channel",
+    "value": 127,
+  },
+  {
+    "channel": 0,
+    "controllerType": 10,
+    "deltaTime": 0,
+    "subtype": "controller",
+    "type": "channel",
+    "value": 64,
+  },
+  {
+    "deltaTime": 0,
+    "subtype": "endOfTrack",
+    "type": "meta",
+  },
+]

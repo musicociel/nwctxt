@@ -31,6 +31,8 @@ import fs from "fs";
 import path from "path";
 
 import Ajv from "ajv";
+import { write } from "midifile-ts";
+import { MidiEventsLog } from "./midiEventsLog";
 const ajv = new Ajv();
 
 const validate = ajv.compile<nwctxt.NWCTXTFile>(schema);
@@ -41,19 +43,28 @@ describe(`parser/generator on files in ${filesFolder}`, () => {
   fs.readdirSync(filesFolder).forEach((nwctxtFile) => {
     if (nwctxtExtension.test(nwctxtFile)) {
       it(nwctxtFile, async () => {
+        const fullFilePath = path.join(filesFolder, nwctxtFile);
         // Check the parser:
-        const nwctxtFileContent = await fs.promises.readFile(path.join(filesFolder, nwctxtFile), "utf-8");
+        const nwctxtFileContent = await fs.promises.readFile(fullFilePath, "utf-8");
         if (nwctxtFile === "empty.nwctxt") {
           expect(nwctxtFileContent.replace(/\r\n/g, "\n")).toBe(nwctxt.emptyNWCTXT.replace(/\r\n/g, "\n"));
         }
         const parseResult = nwctxt.parser.parse(nwctxtFileContent);
         const jsonFileContent = JSON.stringify(parseResult);
-        await expect(parseResult).toMatchFileSnapshot(path.join(filesFolder, nwctxtFile.replace(nwctxtExtension, ".txt")));
+        await expect(parseResult).toMatchFileSnapshot(fullFilePath.replace(nwctxtExtension, ".txt"));
         const isValid = validate(parseResult);
         expect(isValid, JSON.stringify(validate.errors, null, " ")).toBe(true);
         if (nwctxtFile === "empty.nwctxt") {
           expect(parseResult).toStrictEqual(nwctxt.createSong());
         }
+
+        const midiEventsLog = new MidiEventsLog();
+        for (const delay of nwctxt.midi.playMidi(parseResult, midiEventsLog)) {
+          midiEventsLog.applyDelay(delay);
+        }
+        midiEventsLog.endOfTrack();
+        await expect(midiEventsLog.midiEvents).toMatchFileSnapshot(fullFilePath.replace(nwctxtExtension, "-midi.txt"));
+        await fs.promises.writeFile(fullFilePath.replace(nwctxtExtension, ".mid"), write([midiEventsLog.midiEvents], nwctxt.utils.ticksPerBeat));
 
         // Check the generator (with the help of the parser):
         const generatedContent = nwctxt.generator.generate(JSON.parse(jsonFileContent));

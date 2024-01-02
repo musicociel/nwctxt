@@ -2,14 +2,16 @@ import type { NWCTXTAccidental, NWCTXTClef, NWCTXTDuration, NWCTXTKey, NWCTXTNot
 
 // Durations:
 
+export const ticksPerBeat = 480;
+
 export const durations: Record<NWCTXTDuration["Base"], number> = {
-  "64th": 12,
-  "32nd": 24,
-  "16th": 48,
-  "8th": 96,
-  "4th": 192,
-  Half: 384,
-  Whole: 768
+  "64th": ticksPerBeat / 16,
+  "32nd": ticksPerBeat / 8,
+  "16th": ticksPerBeat / 4,
+  "8th": ticksPerBeat / 2,
+  "4th": ticksPerBeat,
+  Half: 2 * ticksPerBeat,
+  Whole: 4 * ticksPerBeat
 };
 
 export const computeDuration = (duration: NWCTXTDuration) => {
@@ -88,7 +90,14 @@ export const keyToAccidentals = (key: NWCTXTKey["fields"]) => {
   return accidentals;
 };
 
-export const noteInfo = (position: NWCTXTPosition, clefBaseNote = clefBaseNotes.Treble, currentAccidentals = defaultNoteAccidentals) => {
+export interface NoteInfo {
+  octave: number;
+  noteName: NWCTXTNoteName;
+  accidental: NWCTXTAccidental;
+  midiNote: number;
+}
+
+export const noteInfo = (position: NWCTXTPosition, clefBaseNote = clefBaseNotes.Treble, currentAccidentals = defaultNoteAccidentals): NoteInfo => {
   const absoluteNote = clefBaseNote + position.position;
   const noteInScale = absoluteNote % 7;
   const octave = (absoluteNote - noteInScale) / 7;
@@ -97,3 +106,9 @@ export const noteInfo = (position: NWCTXTPosition, clefBaseNote = clefBaseNotes.
   const midiNote = octave * 12 + musicNoteOffsets[noteInScale] + accidentals[accidental];
   return { octave, noteName, accidental, midiNote };
 };
+
+// Velocities:
+
+export const dynamicStyles = { ppp: 0, pp: 1, p: 2, mp: 3, mf: 4, f: 5, ff: 6, fff: 7 };
+export const defaultDynVel = [10, 30, 45, 60, 75, 92, 108, 127];
+export const defaultDynamic = "fff";

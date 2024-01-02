@@ -2,6 +2,8 @@ import { expect, it } from "vitest";
 import { clefBaseNotes, computeDuration, computeTempoDuration, noteInfo, clefToBaseNote, keyToAccidentals } from "../src/utils";
 
 it("computeDuration/computeTempoDuration", () => {
+  const smallestUnit = computeDuration({ Base: "32nd", Triplet: true });
+  expect(smallestUnit).toEqual(Math.floor(smallestUnit)); // expect the smallest unit to be an integer
   const tempo120 = computeTempoDuration({ Base: "Quarter", Tempo: 120 });
   expect(tempo120).not.toBe(0);
   expect(computeDuration({ Base: "4th" }) * 120).toEqual(tempo120);

@@ -28,4 +28,5 @@ export * as generator from "./generator";
 export * from "./createSong";
 export * from "./emptyNWCTXT";
 export * as utils from "./utils";
+export * as midi from "./midi";
 export type * from "./types";
