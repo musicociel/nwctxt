@@ -39,7 +39,7 @@ import type {
 
 const onlyBlank = /^\s*$/;
 
-type ProcessField = (instruction: LowLevelNWCTXTInstruction, field: LowLevelNWCTXTField) => any;
+export type ProcessField = (instruction: LowLevelNWCTXTInstruction, field: LowLevelNWCTXTField) => any;
 
 export const defaultProcessField: ProcessField = (instruction, field) => {
   const value = field.value;
@@ -177,7 +177,7 @@ const storeInstructionOnStaff = (instruction: LowLevelNWCTXTInstruction, song: N
   storeInstructionOn(instruction, getCurrentStaff(song));
 };
 
-type ProcessInstruction = (instruction: LowLevelNWCTXTInstruction, song: NWCTXTFile) => void;
+export type ProcessInstruction = (instruction: LowLevelNWCTXTInstruction, song: NWCTXTFile) => void;
 
 export const defaultProcessInstruction: ProcessInstruction = (instruction, song) => {
   getCurrentStaff(song).music.push(aggregateFields(instruction) as NWCTXTMusicItem);

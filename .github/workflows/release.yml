@@ -12,7 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pages: write
       id-token: write
+    concurrency:
+      group: "release"
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - name: Set Node.js version
@@ -27,6 +34,13 @@ jobs:
           npm version ${{ inputs.version }}
       - run: npm ci
       - run: npm run ci
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "doc"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
       - run: git show HEAD
       - run: git push origin master v${{ inputs.version }}
       - run: |

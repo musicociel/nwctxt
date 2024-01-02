@@ -27,7 +27,7 @@ import { createProcessField } from "./createProcessors";
 import type { LowLevelNWCTXTField, LowLevelNWCTXTFile, LowLevelNWCTXTInstruction } from "./lowlevel/types";
 import type { NWCTXTFile, NWCTXTPosition, NWCTXTStaff } from "./types";
 
-type FutureLowLevelNWCTXTField = Omit<LowLevelNWCTXTField, "value"> & { value: any };
+export type FutureLowLevelNWCTXTField = Omit<LowLevelNWCTXTField, "value"> & { value: any };
 
 export const defaultProcessField = (instruction: any, field: FutureLowLevelNWCTXTField) => {
   const value = field.value;

@@ -1,0 +1,9 @@
+{
+  "entryPoints": ["src/index.ts"],
+  "excludeInternal": true,
+  "excludePrivate": true,
+  "out": "./doc",
+  "tsconfig": "./tsconfig.json",
+  "treatValidationWarningsAsErrors": true,
+  "visibilityFilters": {}
+}

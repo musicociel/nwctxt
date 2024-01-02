@@ -1,6 +1,6 @@
 import type { LowLevelNWCTXTFile } from "./lowlevel";
 
-type AnyFields = { [name: string]: any };
+export type AnyFields = { [name: string]: any };
 
 export type NWCTXTNoteName = "C" | "D" | "E" | "F" | "G" | "A" | "B" | "C";
 export type NWCTXTAccidental = "#" | "b" | "n" | "v" | "x" | "";
