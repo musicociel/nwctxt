@@ -33,5 +33,6 @@ jobs:
           npm whoami
           npm publish --provenance --access=public
         name: "npm publish"
+        working-directory: dist
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

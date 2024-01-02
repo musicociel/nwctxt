@@ -1,48 +1,14 @@
 {
+  "private": true,
   "name": "nwctxt",
   "version": "0.2.0",
   "description": "Parser and generator for the nwctxt file format used by Note Worthy Composer.",
-  "files": [
-    "dist"
-  ],
   "type": "module",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "default": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./lowlevel": {
-      "default": "./dist/lowlevel/index.js",
-      "types": "./dist/lowlevel/index.d.ts"
-    },
-    "./lowlevel/parser": {
-      "default": "./dist/lowlevel/parser.js",
-      "types": "./dist/lowlevel/parser.d.ts"
-    },
-    "./lowlevel/generator": {
-      "default": "./dist/lowlevel/generator.js",
-      "types": "./dist/lowlevel/generator.d.ts"
-    },
-    "./parser": {
-      "default": "./dist/parser.js",
-      "types": "./dist/parser.d.ts"
-    },
-    "./generator": {
-      "default": "./dist/generator.js",
-      "types": "./dist/generator.d.ts"
-    },
-    "./schema.json": {
-      "default": "./dist/schema.json"
-    }
-  },
   "scripts": {
-    "ci": "npm run test && npm run lint && npm run format:check",
-    "prepare": "npm run build",
-    "clean": "rm -rf dist",
-    "build": "npm run clean && npm run build:ts && npm run build:schema && npm run build:test",
-    "build:ts": "tsc",
+    "ci": "npm run build && npm run test && npm run lint && npm run format:check",
+    "build": "npm run build:vite && npm run build:ts && npm run build:schema && npm run build:test",
+    "build:vite": "vite build",
+    "build:ts": "tsc --emitDeclarationOnly",
     "build:test": "tsc --project test/tsconfig.json --noEmit",
     "build:schema": "typescript-json-schema --required --noExtraProps -o dist/schema.json tsconfig.json NWCTXTFile",
     "lint": "eslint .",
@@ -63,6 +29,7 @@
     "prettier": "^3.1.1",
     "typescript": "^5.3.3",
     "typescript-json-schema": "^0.62.0",
+    "vite": "^5.0.10",
     "vitest": "^1.1.0"
   },
   "repository": {
