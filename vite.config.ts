@@ -2,7 +2,7 @@ import { readFile } from "fs/promises";
 import { defineConfig } from "vite";
 import pkg from "./package.json";
 
-const exportsArray = [".", "./utils", "./midi", "./lowlevel", "./lowlevel/parser", "./lowlevel/generator", "./parser", "./generator"];
+const exportsArray = [".", "./nwc", "./utils", "./midi", "./lowlevel", "./lowlevel/parser", "./lowlevel/generator", "./parser", "./generator"];
 const exportsMap = {
   "./schema.json": {
     default: "./schema.json"
@@ -21,6 +21,9 @@ exportsArray.forEach((exportName) => {
 
 export default defineConfig({
   build: {
+    rollupOptions: {
+      external: Object.keys(pkg.peerDependencies)
+    },
     outDir: "dist",
     emptyOutDir: true,
     lib: {

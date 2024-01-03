@@ -33,6 +33,7 @@ import path from "path";
 import Ajv from "ajv";
 import { write } from "midifile-ts";
 import { MidiEventsLog } from "./midiEventsLog";
+import { normalizeEndOfLine } from "./endOfLines";
 const ajv = new Ajv();
 
 const validate = ajv.compile<nwctxt.NWCTXTFile>(schema);
@@ -47,7 +48,7 @@ describe(`parser/generator on files in ${filesFolder}`, () => {
         // Check the parser:
         const nwctxtFileContent = await fs.promises.readFile(fullFilePath, "utf-8");
         if (nwctxtFile === "empty.nwctxt") {
-          expect(nwctxtFileContent.replace(/\r\n/g, "\n")).toBe(nwctxt.emptyNWCTXT.replace(/\r\n/g, "\n"));
+          expect(normalizeEndOfLine(nwctxtFileContent)).toBe(normalizeEndOfLine(nwctxt.emptyNWCTXT));
         }
         const parseResult = nwctxt.parser.parse(nwctxtFileContent);
         const jsonFileContent = JSON.stringify(parseResult);
