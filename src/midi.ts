@@ -11,6 +11,7 @@ import {
   defaultTimeSignature,
   durations,
   dynamicStyles,
+  endingBars,
   keyToAccidentals,
   noteInfo,
   resolveTimeSignature
@@ -194,39 +195,109 @@ export class StaffState {
   }
 }
 
+export class StaffFlow {
+  constructor(
+    public readonly music: NWCTXTMusicItem[],
+    public currentIndex = 0
+  ) {}
+  #masterRepeatStartIndex = -1;
+  #masterRepeatCount = 1;
+  #masterRepeatEnabled = true;
+  #localRepeatStartIndex = -1;
+  #localRepeatCount = 1;
+
+  get done() {
+    return this.currentIndex >= this.music.length;
+  }
+
+  get current() {
+    return this.music[this.currentIndex];
+  }
+
+  next() {
+    const current = this.current;
+    if (current.name === "Bar") {
+      switch (current.fields.Style) {
+        case "LocalRepeatOpen":
+          this.#localRepeatStartIndex = this.currentIndex;
+          this.#localRepeatCount = 1;
+          break;
+        case "LocalRepeatClose":
+          if (this.#localRepeatCount < (current.fields.Repeat ?? 2)) {
+            this.#localRepeatCount++;
+            this.currentIndex = this.#localRepeatStartIndex + 1;
+            return;
+          }
+          this.#localRepeatStartIndex = this.currentIndex;
+          break;
+        case "MasterRepeatOpen":
+          this.#masterRepeatEnabled = true;
+          this.#masterRepeatStartIndex = this.currentIndex;
+          this.#masterRepeatCount = 1;
+          break;
+        case "MasterRepeatClose":
+          if (this.#masterRepeatEnabled) {
+            this.#masterRepeatEnabled = false;
+            this.#masterRepeatCount++;
+            this.currentIndex = this.#masterRepeatStartIndex + 1;
+            return;
+          }
+          break;
+      }
+    } else if (current.name === "Ending") {
+      this.#masterRepeatEnabled = true;
+      while (!this.done && (this.current.name !== "Ending" || !this.current.fields.Endings?.includes(this.#masterRepeatCount))) {
+        // TODO: make the algorithm more accurate
+        this.currentIndex++;
+      }
+    } else if (current.name === "Flow") {
+      // TODO: process those flows correctly
+    }
+    this.currentIndex++;
+  }
+}
+
 export const playMidi = function* (file: NWCTXTFile, midiEvents: Partial<MidiEvents>) {
   const musicState = new TimingState();
   musicState.midiEvents = midiEvents;
   const staffInfoArray = file.staffs
     .filter((staff) => !staff.properties.StaffProperties?.Muted)
     .map((staff, index) => {
-      const staffState = new StaffState();
-      staffState.midiEvents = midiEvents;
-      staffState.channel = (staff.properties.StaffProperties?.Channel ?? index) - 1;
+      const state = new StaffState();
+      state.midiEvents = midiEvents;
+      state.channel = (staff.properties.StaffProperties?.Channel ?? index) - 1;
       if (staff.properties.StaffInstrument) {
-        staffState.apply({ name: "Instrument", fields: staff.properties.StaffInstrument });
+        state.apply({ name: "Instrument", fields: staff.properties.StaffInstrument });
       }
-      midiEvents.controller?.(staffState.channel, 7, staff.properties.StaffProperties?.Volume ?? 127);
-      midiEvents.controller?.(staffState.channel, 10, staff.properties.StaffProperties?.StereoPan ?? 64);
+      midiEvents.controller?.(state.channel, 7, staff.properties.StaffProperties?.Volume ?? 127);
+      midiEvents.controller?.(state.channel, 10, staff.properties.StaffProperties?.StereoPan ?? 64);
+      const flow = new StaffFlow([
+        ...staff.music,
+        {
+          name: "Bar",
+          fields: {
+            Style: endingBars[staff.properties.StaffProperties?.EndingBar ?? "Section Close"]
+          }
+        }
+      ]);
       return {
-        staffState,
-        music: staff.music,
-        nextIndex: 0,
+        state,
+        flow,
         delay: 0
       };
     });
   while (true) {
     let nextDelay = Infinity;
     for (const staff of staffInfoArray) {
-      while (staff.delay === 0 && staff.nextIndex < staff.music.length) {
-        const item = staff.music[staff.nextIndex];
+      while (staff.delay === 0 && !staff.flow.done) {
+        const item = staff.flow.current;
         musicState.apply(item);
-        staff.delay = staff.staffState.apply(item);
-        staff.nextIndex++;
+        staff.delay = staff.state.apply(item);
+        staff.flow.next();
       }
-      staff.staffState.applyDelay(0, true);
-      if (staff.delay === 0 && staff.staffState.currentNotes.length > 0) {
-        staff.delay = staff.staffState.currentNotes[0].remainingDuration;
+      staff.state.applyDelay(0, true);
+      if (staff.delay === 0 && staff.state.currentNotes.length > 0) {
+        staff.delay = staff.state.currentNotes[0].remainingDuration;
       }
       if (staff.delay > 0) {
         nextDelay = Math.min(nextDelay, staff.delay);
@@ -238,7 +309,7 @@ export const playMidi = function* (file: NWCTXTFile, midiEvents: Partial<MidiEve
     yield nextDelay;
     for (const staff of staffInfoArray) {
       staff.delay -= nextDelay;
-      staff.staffState.applyDelay(nextDelay);
+      staff.state.applyDelay(nextDelay);
     }
   }
 };
