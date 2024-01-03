@@ -34,6 +34,7 @@ jobs:
           npm version ${{ inputs.version }}
       - run: npm ci
       - run: npm run ci
+      - run: cp -a demo/dist doc/demo
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

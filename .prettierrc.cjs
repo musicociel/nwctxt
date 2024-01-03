@@ -5,5 +5,6 @@ module.exports = {
   printWidth: 150,
   singleQuote: false,
   endOfLine: os.EOL === "\r\n" ? "crlf" : "lf",
-  trailingComma: "none"
+  trailingComma: "none",
+  plugins: ["prettier-plugin-svelte"]
 };
