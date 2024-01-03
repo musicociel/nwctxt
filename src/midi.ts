@@ -34,7 +34,7 @@ export class TimingState {
     switch (item.name) {
       case "Tempo": {
         this.tempo = { Tempo: item.fields.Tempo, Base: item.fields.Base };
-        this.midiEvents?.setTempo?.((durations["4th"] * 60000000) / computeTempoDuration(this.tempo));
+        this.midiEvents?.setTempo?.(Math.round((durations["4th"] * 60000000) / computeTempoDuration(this.tempo)));
         break;
       }
       case "TimeSig": {

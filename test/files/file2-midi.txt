@@ -17,7 +17,7 @@
   },
   {
     "deltaTime": 0,
-    "microsecondsPerBeat": 576923.0769230769,
+    "microsecondsPerBeat": 576923,
     "subtype": "setTempo",
     "type": "meta",
   },
