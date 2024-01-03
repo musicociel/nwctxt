@@ -271,7 +271,7 @@ export interface NWCTXTEnding {
 export interface NWCTXTFlow {
   name: "Flow";
   fields: {
-    Style?: "Coda" | "Segno" | "Fine" | "ToCoda" | "DaCapo" | "DCalCoda" | "DCalFine" | "DalSegno" | "DSalCoda" | "DSalFine";
+    Style: "Coda" | "Segno" | "Fine" | "ToCoda" | "DaCapo" | "DCalCoda" | "DCalFine" | "DalSegno" | "DSalCoda" | "DSalFine";
     /**
      * @example -8
      * @example 7
