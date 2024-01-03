@@ -1,4 +1,15 @@
-import type { NWCTXTAccidental, NWCTXTClef, NWCTXTDuration, NWCTXTKey, NWCTXTNoteName, NWCTXTPosition, NWCTXTTempo, NWCTXTTimeSig } from "./types";
+import type {
+  NWCTXTAccidental,
+  NWCTXTBar,
+  NWCTXTClef,
+  NWCTXTDuration,
+  NWCTXTKey,
+  NWCTXTNoteName,
+  NWCTXTPosition,
+  NWCTXTStaff,
+  NWCTXTTempo,
+  NWCTXTTimeSig
+} from "./types";
 
 // Durations:
 
@@ -112,3 +123,13 @@ export const noteInfo = (position: NWCTXTPosition, clefBaseNote = clefBaseNotes.
 export const dynamicStyles = { ppp: 0, pp: 1, p: 2, mp: 3, mf: 4, f: 5, ff: 6, fff: 7 };
 export const defaultDynVel = [10, 30, 45, 60, 75, 92, 108, 127];
 export const defaultDynamic = "fff";
+
+// Ending bars:
+
+export const endingBars: Record<NonNullable<NonNullable<NWCTXTStaff["properties"]["StaffProperties"]>["EndingBar"]>, NWCTXTBar["fields"]["Style"]> = {
+  Double: "Double",
+  "Master Repeat Close": "MasterRepeatClose",
+  "Open (hidden)": "Transparent",
+  "Section Close": "SectionClose",
+  Single: "Single"
+};

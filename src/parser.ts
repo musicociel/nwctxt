@@ -41,6 +41,11 @@ const onlyBlank = /^\s*$/;
 
 export type ProcessField = (instruction: LowLevelNWCTXTInstruction, field: LowLevelNWCTXTField) => any;
 
+export const toNumberOrString = (value: string) => {
+  const tryNumber = onlyBlank.test(value) ? NaN : Number(value);
+  return isNaN(tryNumber) ? value : tryNumber;
+};
+
 export const defaultProcessField: ProcessField = (instruction, field) => {
   const value = field.value;
   if (field.quoted) {
@@ -50,8 +55,7 @@ export const defaultProcessField: ProcessField = (instruction, field) => {
   } else if (value === "N") {
     return false;
   } else {
-    const tryNumber = onlyBlank.test(value) ? NaN : Number(value);
-    return isNaN(tryNumber) ? value : tryNumber;
+    return toNumberOrString(value);
   }
 };
 
@@ -79,7 +83,7 @@ const splitArray: ProcessField = (instruction, field) => {
 };
 
 const splitNumberArray: ProcessField = (instruction, field) => {
-  return field.value.split(",").map((value) => +value);
+  return field.value.split(",").map(toNumberOrString);
 };
 
 const splitTimeSignature: ProcessField = (instruction, field) => {
@@ -120,7 +124,7 @@ export const processFieldMap: Record<string, ProcessField> = {
   Dur2: processDur,
   "Key|Signature": splitArray,
   "TimeSig|Signature": splitTimeSignature,
-  "Ending|Endings": splitArray,
+  "Ending|Endings": splitNumberArray,
   DynVel: splitNumberArray,
   "MPC|Pt1": splitNumberArray,
   "MPC|Pt2": splitNumberArray,

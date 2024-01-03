@@ -1,0 +1,646 @@
+{
+  "clip": false,
+  "extra": null,
+  "fonts": {
+    "PageSmallText": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+    "PageText": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 12,
+      "Typeface": "Times New Roman",
+    },
+    "PageTitleText": {
+      "Bold": true,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 24,
+      "Typeface": "Times New Roman",
+    },
+    "StaffBold": {
+      "Bold": true,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+    "StaffItalic": {
+      "Bold": true,
+      "CharSet": 0,
+      "Italic": true,
+      "Size": 10,
+      "Typeface": "Times New Roman",
+    },
+    "StaffLyric": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 7.2,
+      "Typeface": "Times New Roman",
+    },
+    "User1": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+    "User2": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+    "User3": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+    "User4": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+    "User5": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+    "User6": {
+      "Bold": false,
+      "CharSet": 0,
+      "Italic": false,
+      "Size": 8,
+      "Typeface": "Times New Roman",
+    },
+  },
+  "properties": {
+    "Editor": {
+      "ActiveStaff": 1,
+      "CaretIndex": 1,
+      "CaretPos": 3,
+    },
+    "PgMargins": {
+      "Bottom": 1.27,
+      "Left": 1.27,
+      "Mirror": false,
+      "Right": 1.27,
+      "Top": 1.27,
+    },
+    "PgSetup": {
+      "BarNumbers": "None",
+      "DurationPadding": true,
+      "ExtendLastSystem": false,
+      "JustifyVertically": true,
+      "PageNumbers": 0,
+      "PrintSystemSepMark": false,
+      "StaffLabels": "None",
+      "StaffSize": 16,
+      "StartingBar": 1,
+      "TitlePage": true,
+      "Zoom": 4,
+    },
+    "SongInfo": {
+      "Author": "<Name>",
+      "Copyright1": "",
+      "Copyright2": "",
+      "Lyricist": "",
+      "Title": "RepeatTest",
+    },
+  },
+  "staffs": [
+    {
+      "lyrics": [],
+      "music": [
+        {
+          "fields": {
+            "Type": "Treble",
+          },
+          "name": "Clef",
+        },
+        {
+          "fields": {
+            "Signature": [
+              4,
+              4,
+            ],
+          },
+          "name": "TimeSig",
+        },
+        {
+          "fields": {
+            "Pos": 7,
+            "Tempo": 220,
+          },
+          "name": "Tempo",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 1,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 0,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": -1,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Style": "MasterRepeatOpen",
+          },
+          "name": "Bar",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": -2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": -1,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 0,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 1,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Style": "LocalRepeatOpen",
+          },
+          "name": "Bar",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 3,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 1,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 0,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Repeat": 2,
+            "Style": "LocalRepeatClose",
+          },
+          "name": "Bar",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": -1,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 0,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 1,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {},
+          "name": "Bar",
+        },
+        {
+          "fields": {
+            "Endings": [
+              1,
+              2,
+            ],
+          },
+          "name": "Ending",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 1,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {},
+          "name": "Bar",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 0,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": -1,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": -2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "#",
+              "head": "",
+              "position": -3,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Style": "MasterRepeatClose",
+          },
+          "name": "Bar",
+        },
+        {
+          "fields": {
+            "Endings": [
+              3,
+            ],
+          },
+          "name": "Ending",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "4th",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": 2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+        {
+          "fields": {},
+          "name": "Bar",
+        },
+        {
+          "fields": {
+            "Dur": {
+              "Base": "Whole",
+            },
+            "Pos": {
+              "accidental": "",
+              "head": "",
+              "position": -2,
+              "tie": false,
+            },
+          },
+          "name": "Note",
+        },
+      ],
+      "properties": {
+        "AddStaff": {
+          "Group": "Standard",
+          "Name": "Staff",
+        },
+        "StaffInstrument": {
+          "DynVel": [
+            10,
+            30,
+            45,
+            60,
+            75,
+            92,
+            108,
+            127,
+          ],
+          "Trans": 0,
+        },
+        "StaffProperties": {
+          "BoundaryBottom": 12,
+          "BoundaryTop": 12,
+          "Channel": 1,
+          "Color": "Default",
+          "Device": 0,
+          "EndingBar": "Section Close",
+          "Lines": 5,
+          "Muted": false,
+          "StereoPan": 64,
+          "Visible": true,
+          "Volume": 127,
+        },
+      },
+    },
+  ],
+  "version": "2.751",
+}

@@ -62,16 +62,18 @@ export interface NWCTXTRest {
 export interface NWCTXTBar {
   name: "Bar";
   fields: {
-    /**
-     * @example "LocalRepeatClose"
-     * @example "Double"
-     * @example "LocalRepeatOpen"
-     * @example "MasterRepeatClose"
-     * @example "MasterRepeatOpen"
-     * @example "SectionClose"
-     * @example "SectionOpen"
-     */
-    Style?: string;
+    Style?:
+      | "Single"
+      | "Double"
+      | "BrokenSingle"
+      | "BrokenDouble"
+      | "SectionOpen"
+      | "SectionClose"
+      | "LocalRepeatOpen"
+      | "LocalRepeatClose"
+      | "MasterRepeatOpen"
+      | "MasterRepeatClose"
+      | "Transparent";
     /**
      * @example 3
      */
@@ -261,26 +263,15 @@ export interface NWCTXTText {
 export interface NWCTXTEnding {
   name: "Ending";
   fields: {
-    Endings?: string[];
+    Endings?: (number | "D")[];
+    ClosedBracket?: boolean;
   };
 }
 
 export interface NWCTXTFlow {
   name: "Flow";
   fields: {
-    /**
-     * @example "Fine"
-     * @example "DCalFine"
-     * @example "Segno"
-     * @example "ToCoda"
-     * @example "DCalCoda"
-     * @example "Coda"
-     * @example "DSalCoda"
-     * @example "DSalFine"
-     * @example "DaCapo"
-     * @example "DalSegno"
-     */
-    Style?: string;
+    Style?: "Coda" | "Segno" | "Fine" | "ToCoda" | "DaCapo" | "DCalCoda" | "DCalFine" | "DalSegno" | "DSalCoda" | "DSalFine";
     /**
      * @example -8
      * @example 7
@@ -526,7 +517,7 @@ export interface NWCTXTStaff {
       /**
        * @default "Section Close"
        */
-      EndingBar?: string;
+      EndingBar?: "Section Close" | "Master Repeat Close" | "Single" | "Double" | "Open (hidden)";
 
       /**
        * @default 5
