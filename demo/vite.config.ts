@@ -8,6 +8,7 @@ const root = dirname(fileURLToPath(import.meta.url));
 // https://vitejs.dev/config/
 export default defineConfig({
   root,
+  base: "./",
   plugins: [svelte()],
   resolve: {
     alias: [{ find: "nwctxt", replacement: join(root, "..", "src") }]
