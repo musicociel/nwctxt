@@ -32,6 +32,7 @@ jobs:
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
           npm version ${{ inputs.version }}
+        if: inputs.version != 'doconly'
       - run: npm ci
       - run: npm run ci
       - run: cp -a demo/dist doc/demo
@@ -44,9 +45,11 @@ jobs:
         uses: actions/deploy-pages@v4
       - run: git show HEAD
       - run: git push origin master v${{ inputs.version }}
+        if: inputs.version != 'doconly'
       - run: |
           npm whoami
           npm publish --provenance --access=public
+        if: inputs.version != 'doconly'
         name: "npm publish"
         working-directory: dist
         env:
