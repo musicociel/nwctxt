@@ -3,6 +3,8 @@
 [![npm](https://img.shields.io/npm/v/nwctxt)](https://www.npmjs.com/package/nwctxt)
 
 Parser and generator for the `.nwctxt` format used by [Note Worthy Composer](https://noteworthycomposer.com/).
+Also includes conversion to the midi format.
+Look at [the demo](https://musicociel.github.io/nwctxt/demo/) and the [API documentation](https://musicociel.github.io/nwctxt/).
 
 ## Installation
 
