@@ -1,5 +1,5 @@
 import type { AnyEvent } from "midifile-ts";
-import type { MidiEvents } from "../src/midi";
+import type { MidiEvents } from "../../src/midi";
 
 export class MidiEventsLog implements MidiEvents {
   midiEvents: AnyEvent[] = [];

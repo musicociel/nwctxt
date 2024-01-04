@@ -1,10 +1,17 @@
-import { writable, asReadable } from "@amadeus-it-group/tansu";
+import { asReadable, computed, writable } from "@amadeus-it-group/tansu";
+import { write } from "midifile-ts";
+import type { NWCTXTFile } from "nwctxt";
+import { playMidi } from "nwctxt/midi";
 import { extractNWCTXT } from "nwctxt/nwc";
 import { parse } from "nwctxt/parser";
-import type { NWCTXTFile } from "nwctxt";
+import { ticksPerBeat } from "nwctxt/utils";
+import { MidiEventsLog } from "./midiEventsLog";
+import { resolveStorePromise, toBlobURL } from "./storeUtils";
 
-const writableFileContentPromise$ = writable(null as Promise<NWCTXTFile> | null);
+export const file$ = writable(null as File | null);
+export const writableFileContentPromise$ = computed(() => asyncOpenFile(file$()));
 export const fileContentPromise$ = asReadable(writableFileContentPromise$);
+export const fileContent$ = resolveStorePromise(fileContentPromise$);
 
 const readFile = (file: File) =>
   new Promise<Uint8Array>((resolve, reject) => {
@@ -16,12 +23,28 @@ const readFile = (file: File) =>
     fileReader.readAsArrayBuffer(file);
   });
 
-const asyncOpenFile = async (file: File) => {
+const asyncOpenFile = async (file: File | null) => {
+  if (!file) {
+    return null;
+  }
   const fileContent = await readFile(file);
   const nwcTxt = extractNWCTXT(fileContent);
   return parse(nwcTxt);
 };
 
-export const openFile = (file: File) => {
-  writableFileContentPromise$.set(asyncOpenFile(file));
+export const toMidiFile = (fileContent: NWCTXTFile | null) => {
+  if (!fileContent) {
+    return null;
+  }
+  const midiEventsLog = new MidiEventsLog();
+  for (const delay of playMidi(fileContent, midiEventsLog)) {
+    midiEventsLog.applyDelay(delay);
+  }
+  midiEventsLog.endOfTrack();
+  console.log("Midi file content", midiEventsLog.midiEvents);
+  const binaryFile = write([midiEventsLog.midiEvents], ticksPerBeat);
+  return new Blob([binaryFile], { type: "audio/midi" });
 };
+
+export const midiFileBlob$ = computed(() => toMidiFile(fileContent$()));
+export const midiFileURL$ = toBlobURL(midiFileBlob$);

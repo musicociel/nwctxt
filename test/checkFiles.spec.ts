@@ -32,7 +32,7 @@ import path from "path";
 
 import Ajv from "ajv";
 import { write } from "midifile-ts";
-import { MidiEventsLog } from "./midiEventsLog";
+import { MidiEventsLog } from "../demo/src/midiEventsLog";
 import { normalizeEndOfLine } from "./endOfLines";
 const ajv = new Ajv();
 
